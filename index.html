@@ -2,847 +2,498 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Тест: Ортопедическая стоматология (все 475 вопросов)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=1.5">
+  <title>Обещаю вернуться · Томск</title>
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
+
     body {
-      font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
-      background: #eef2f7;
-      padding: 1.5rem;
-    }
-    .test-container {
-      max-width: 960px;
-      margin: 0 auto;
-    }
-    .test-header {
-      background: white;
-      border-radius: 28px;
-      padding: 1.8rem 2rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 12px 28px rgba(0,0,0,0.07);
-      text-align: center;
-      position: sticky;
-      top: 1rem;
-      z-index: 10;
-      border: 1px solid rgba(66,153,225,0.15);
-    }
-    .test-header h1 {
-      font-size: 1.9rem;
-      background: linear-gradient(135deg, #1E3C72, #2A5298);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      margin-bottom: 0.4rem;
-    }
-    .test-header p {
-      color: #2c5282;
-      font-weight: 500;
-    }
-    .progress-area {
-      margin-top: 1rem;
-    }
-    .progress-bar-bg {
-      background: #e2e8f0;
-      border-radius: 30px;
-      height: 10px;
-      overflow: hidden;
-    }
-    .progress-fill {
-      background: linear-gradient(90deg, #2b6cb0, #38b2ac);
-      width: 0%;
-      height: 100%;
-      transition: width 0.25s ease;
-    }
-    .stats {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 0.5rem;
-      font-size: 0.85rem;
-      color: #2d3748;
-      font-weight: 500;
-    }
-    .question-card {
-      background: white;
-      border-radius: 28px;
-      padding: 1.6rem 1.8rem;
-      margin-bottom: 1.8rem;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.04);
-      transition: all 0.2s;
-      border: 1px solid #e2edff;
-    }
-    .q-header {
-      display: flex;
-      align-items: baseline;
-      gap: 0.8rem;
-      flex-wrap: wrap;
-      margin-bottom: 1rem;
-    }
-    .q-num {
-      background: #2c5282;
-      color: white;
-      font-weight: 600;
-      padding: 0.2rem 1rem;
-      border-radius: 40px;
-      font-size: 0.85rem;
-    }
-    .q-text {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: #1a202c;
-      line-height: 1.4;
-    }
-    .options {
-      list-style: none;
-      margin-top: 1.2rem;
-    }
-    .opt-item {
-      margin-bottom: 0.7rem;
-    }
-    .opt-label {
+      background: linear-gradient(145deg, #1a1e2b 0%, #2d3340 100%);
+      min-height: 100vh;
       display: flex;
       align-items: center;
-      gap: 0.8rem;
-      padding: 0.75rem 1.2rem;
-      background: #f8fafc;
-      border: 1.5px solid #e2edf2;
-      border-radius: 60px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .opt-label:hover {
-      background: #eef2ff;
-      border-color: #90cdf4;
-    }
-    .opt-radio {
-      appearance: none;
-      width: 20px;
-      height: 20px;
-      border: 2px solid #a0aec0;
-      border-radius: 50%;
+      justify-content: center;
+      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', system-ui, -apple-system, sans-serif;
+      padding: 20px;
       margin: 0;
       position: relative;
-      cursor: pointer;
-      flex-shrink: 0;
     }
-    .opt-radio:checked {
-      border-color: #2b6cb0;
-      background-color: #2b6cb0;
-      box-shadow: inset 0 0 0 4px white;
-    }
-    .opt-text {
-      flex: 1;
-      font-size: 0.98rem;
-      color: #2d3748;
-    }
-    .opt-label.correct-highlight {
-      background: #e6fffa;
-      border-color: #38b2ac;
-    }
-    .opt-label.wrong-highlight {
-      background: #fff0f0;
-      border-color: #feb2b2;
-    }
-    .opt-label.disabled {
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(circle at 30% 40%, rgba(180, 200, 255, 0.08) 0%, transparent 40%),
+                        radial-gradient(circle at 70% 70%, rgba(220, 190, 150, 0.1) 0%, transparent 45%);
       pointer-events: none;
-      opacity: 0.9;
     }
-    .commentary {
-      margin-top: 1rem;
-      padding: 0.9rem 1.2rem;
-      background: #fef9e3;
-      border-left: 6px solid #ed8936;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      color: #2d3748;
+
+    .promise-card {
+      background: rgba(20, 25, 35, 0.75);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-radius: 56px;
+      padding: 40px 28px 35px;
+      box-shadow: 0 40px 60px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.12), inset 0 1px 0 rgba(255,255,255,0.1);
+      width: 100%;
+      max-width: 720px;
+      text-align: center;
+      color: #f0eae0;
+      transition: transform 0.25s ease;
+      position: relative;
+      z-index: 2;
+    }
+
+    .promise-card:hover {
+      transform: scale(1.01);
+    }
+
+    .heart-icon {
+      font-size: 2.8rem;
+      filter: drop-shadow(0 8px 12px rgba(0,0,0,0.5));
+      margin-bottom: 5px;
+      display: block;
+      letter-spacing: 2px;
+    }
+
+    h1 {
+      font-weight: 350;
+      font-size: clamp(1.9rem, 7vw, 2.8rem);
+      letter-spacing: 1.5px;
+      margin-bottom: 10px;
+      color: #f7efe2;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.6);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .main-promise {
+      font-weight: 600;
+      background: linear-gradient(to right, #d9c8a8, #f3e3c9);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: 1.2em;
+      margin: 5px 0;
+    }
+
+    .location-badge {
+      background: rgba(210, 230, 255, 0.12);
+      backdrop-filter: blur(10px);
+      padding: 6px 24px;
+      border-radius: 40px;
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      color: #d4cdb8;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 10px 0 5px;
+      border: 1px solid rgba(255,255,240,0.25);
+    }
+
+    .target-date {
+      font-size: 1.15rem;
+      font-weight: 350;
+      color: #cdc1aa;
+      margin: 10px 0 30px;
+      background: rgba(0, 0, 0, 0.3);
+      display: inline-block;
+      padding: 10px 32px;
+      border-radius: 60px;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .timer-grid {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 15px 8px;
+      margin: 25px 0 18px;
+    }
+
+    .time-block {
+      background: rgba(10, 18, 30, 0.7);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-radius: 34px;
+      padding: 18px 10px;
+      min-width: 85px;
+      flex: 1 1 80px;
+      box-shadow: 0 18px 28px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255,255,255,0.25);
+      border: 1px solid rgba(230, 215, 180, 0.25);
+      transition: all 0.2s;
+    }
+
+    .time-block:hover {
+      background: rgba(25, 35, 50, 0.8);
+      border-color: rgba(245, 225, 180, 0.5);
+      transform: translateY(-4px);
+    }
+
+    .number {
+      font-size: clamp(2.6rem, 9vw, 4.8rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: #fff7ed;
+      text-shadow: 0 0 22px #dbb45c, 0 5px 10px black;
+      display: block;
+      letter-spacing: 1px;
+    }
+
+    .label {
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      color: #c7b595;
+      margin-top: 6px;
+      display: block;
+    }
+
+    .separator {
+      font-size: 2.6rem;
+      font-weight: 300;
+      color: rgba(245, 235, 210, 0.55);
+      margin: 0 2px;
+      align-self: center;
       display: none;
     }
-    .commentary.show {
-      display: block;
-      animation: fadeIn 0.2s;
+
+    @media (min-width: 520px) {
+      .separator {
+        display: block;
+      }
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-6px);}
-      to { opacity: 1; transform: translateY(0);}
+
+    .message-area {
+      margin: 25px 0 10px;
+      font-size: 1.15rem;
+      font-weight: 400;
+      background: rgba(0,0,0,0.35);
+      padding: 14px 22px;
+      border-radius: 50px;
+      display: inline-block;
+      color: #e7ddcc;
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,220,0.15);
+      line-height: 1.5;
+      max-width: 90%;
     }
-    .result-panel {
-      background: white;
-      border-radius: 32px;
-      padding: 2rem;
-      text-align: center;
-      margin-top: 1rem;
-      box-shadow: 0 12px 28px rgba(0,0,0,0.1);
-    }
-    .score-badge {
-      font-size: 3rem;
-      font-weight: 800;
-      background: linear-gradient(145deg, #1e3c72, #2b6cb0);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    .reset-btn {
-      background: #2b6cb0;
-      border: none;
-      padding: 0.8rem 2rem;
-      border-radius: 40px;
+
+    .love-note {
+      margin-top: 18px;
+      font-style: italic;
+      color: #cdbc9a;
       font-size: 1rem;
-      font-weight: bold;
-      color: white;
-      cursor: pointer;
-      margin-top: 1rem;
-      transition: 0.2s;
+      background: rgba(255,255,245,0.05);
+      padding: 8px 22px;
+      border-radius: 30px;
+      display: inline-block;
     }
-    .reset-btn:hover {
-      background: #1e4e7a;
-      transform: scale(0.98);
+
+    .local-time-info {
+      margin-top: 25px;
+      font-size: 0.9rem;
+      color: #a09784;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      background: rgba(0,0,0,0.35);
+      padding: 10px 22px;
+      border-radius: 50px;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+      backdrop-filter: blur(4px);
     }
-    footer {
-      text-align: center;
-      margin-top: 2rem;
-      color: #4a5568;
+
+    #currentLocalTime {
+      font-weight: 600;
+      background: rgba(255,255,245,0.12);
+      padding: 4px 14px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+      color: #f2e4cc;
+    }
+
+    button {
+      background: transparent;
+      border: 1px solid rgba(235, 220, 190, 0.45);
+      color: #e7d7b8;
+      padding: 6px 15px;
+      border-radius: 30px;
       font-size: 0.8rem;
+      cursor: pointer;
+      transition: 0.2s;
+      backdrop-filter: blur(5px);
+      margin-left: 4px;
     }
-    @media (max-width: 680px) {
-      body { padding: 0.8rem; }
-      .question-card { padding: 1.2rem; }
-      .q-text { font-size: 1rem; }
+
+    button:hover {
+      background: rgba(255,255,240,0.18);
+      border-color: #f5e6cc;
+      color: #fff;
+    }
+
+    .small-note {
+      font-size: 0.75rem;
+      color: #938b78;
+      margin-top: 12px;
+    }
+
+    .destination {
+      font-weight: 500;
+      color: #e7cf9e;
     }
   </style>
 </head>
 <body>
-<div class="test-container">
-  <div class="test-header">
-    <h1>🦷 Ортопедическая стоматология</h1>
-    <p>Государственный экзамен — все вопросы из официального сборника (475 заданий)</p>
-    <div class="progress-area">
-      <div class="progress-bar-bg"><div class="progress-fill" id="progressFill"></div></div>
-      <div class="stats"><span>📋 Всего вопросов: <span id="totalCountSpan">0</span></span><span>✅ Отвечено: <span id="answeredCountSpan">0</span></span></div>
+  <div class="promise-card">
+    <div class="heart-icon">💖</div>
+    <h1>
+      <span class="main-promise">ОБЕЩАЮ ВЕРНУТЬСЯ</span>
+    </h1>
+    <div class="location-badge">
+      <span>📍 Томск</span>
+      <span style="margin:0 5px;">·</span>
+      <span>🏡 любимая женщина</span>
+    </div>
+
+    <div class="target-date" id="targetDisplay">20 января</div>
+
+    <!-- Таймер -->
+    <div class="timer-grid" id="timerGrid">
+      <div class="time-block">
+        <span class="number" id="days">00</span>
+        <span class="label">дней</span>
+      </div>
+      <span class="separator">:</span>
+      <div class="time-block">
+        <span class="number" id="hours">00</span>
+        <span class="label">часов</span>
+      </div>
+      <span class="separator">:</span>
+      <div class="time-block">
+        <span class="number" id="minutes">00</span>
+        <span class="label">минут</span>
+      </div>
+      <span class="separator">:</span>
+      <div class="time-block">
+        <span class="number" id="seconds">00</span>
+        <span class="label">секунд</span>
+      </div>
+    </div>
+
+    <div class="message-area" id="personalMessage">
+      Я вернусь в Томск к любимой...
+    </div>
+    <div class="love-note" id="loveNote">
+      ✨ Где мы сможем построить семью ✨
+    </div>
+
+    <div class="local-time-info">
+      <span>🕰️ <strong>Местное время:</strong></span>
+      <span id="currentLocalTime">--:--:--</span>
+      <button id="refreshTimeBtn" title="Обновить">↻</button>
+    </div>
+    <div class="small-note">
+      * отсчет по твоему локальному времени · до <span class="destination">20 января</span>
     </div>
   </div>
-  <div id="questionsList"></div>
-  <div id="resultBlock" style="display: none;">
-    <div class="result-panel">
-      <h2>🎓 Результат тестирования</h2>
-      <div class="score-badge" id="finalScore">0 / 0</div>
-      <p id="resultMessage" style="margin-top: 0.8rem; font-weight: 500;"></p>
-      <button class="reset-btn" id="resetTestBtn">⟳ Пройти заново</button>
-    </div>
-  </div>
-  <footer>Все вопросы и ответы — из официального документа «Тест госы.docx» (ортопедическая стоматология).</footer>
-</div>
-<script>
-  // ====================================================================
-  // ПОЛНЫЙ МАССИВ ВОПРОСОВ, ИЗВЛЕЧЁННЫЙ ИЗ ПРЕДОСТАВЛЕННОГО ФАЙЛА
-  // ====================================================================
-  const allQuestions = [
-    { text: "Пpeимyщecтва мeталлoкepамичecкиx зyбныx пpoтeзoв", options: ["эcтeтичныe","пpoчныe","лeгкиe","дeшeвыe"], correct: 0 },
-    { text: "Bыcoта нижнeгo oтдeла лица пpи цeнтpальнoм cooтнoшeнии чeлюcтeй пo cpавнeнию c выcoтoй пpи oтнocитeльнoм физиoлoгичecкoм пoкoe:", options: ["бoльшe","pавна","мeньшe"], correct: 2 },
-    { text: "Для двoйнoгo oттиcка иcпoльзyютcя маccы:", options: ["cиликoнoвыe","твepдoкpиcталличecкиe","альгинатныe","тepмoплаcтичecкиe"], correct: 0 },
-    { text: "Aппаpаты, иcпoльзyeмыe для вpeмeннoй иммoбилизации зyбoв пpи пepeлoмаx чeлюcтныx кocтeй", options: ["замeщающиe","фикcиpyющиe","тpанcпopтныe","пpoфилактичecкиe"], correct: 2 },
-    { text: "Cтабилизиpyющee плeчo oпopнo-yдepживающeгo кламмepа oбecпeчиваeт", options: ["yдepжаниe пpoтeза на чeлюcти","yдepжаниe кламмepа на зyбe","пepeдачy вepтикальнoй нагpyзки на зyб","ycтoйчивocть пpoтeза пpи дeйcтвии вepтикальнoгo кoмпoнeнта нагpyзки"], correct: 1 },
-    { text: "Oптимальная длина штифта кyльтeвoй вкладки cocтавляeт", options: ["pавна длинe кyльти","2/3 длины кopня","1/3 длины кopня","1/2 длины кopня","1/4 длины кopня"], correct: 1 },
-    { text: "Teлo кламмepа надo pаcпoлагать", options: ["в зoнe пoднyтpeния","в зoнe peтeнции","y cамoгo альвeoляpнoгo гpeбня c диcтальнoй или мeдиальнoй cтopoны oпopнoгo зyба","на ypoвнe экватopа на кoнтактнoй пoвepxнocти мeдиальнo или диcтальнo"], correct: 3 },
-    { text: "Заключитeльным лабopатopным этапoм изгoтoвлeния мeталлoкepамичecкoй кopoнки являeтcя:", options: ["извлeчeниe платинoвoгo кoлпачка из кopoнки","заключитeльный oбжиг","oкoнчатeльная кoppeкция фopмы","глазypoваниe","пpипаcoвка на мoдeли"], correct: 3 },
-    { text: "Tpeбoвания к вocкoвым базиcам c oкклюзиoнными валиками", options: ["изгoтoвлeниe из мoдeлиpoвoчнoгo вocка","oкклюзиoнный валик нижe ecтecтвeнныx зyбoв","oкклюзиoнный валик yжe ecтecтвeнныx зyбoв","вocкoвoй валик вышe и шиpe ecтecтвeнныx зyбoв и pаcпoлoжeн пo цeнтpy альвeoляpнoгo oтpocтка"], correct: 3 },
-    { text: "К нeдocтаткам цeльнoлитыx кopoнoк oтнocитcя", options: ["плoтнoe пpилeганиe в пpишeeчнoй oблаcти","мeньшая тpавматичнocть","тoчнoe вocпpoизвeдeниe peльeфа анатoмичecкoй фopмы","низкая эcтeтичнocть"], correct: 3 },
-    { text: "Пpи чpeзмepнoм yкopoчeнии пpeпаpиpyeмoгo зyба мoгyт наблюдатьcя", options: ["cнижeниe эcтeтичecкoй нopмы пpoтeза","cнижeниe дикции","cнижeниe фyнкциoнальнoй цeннocти пpoтeза","cнижeниe фикcации и чаcтыe pаcцeмeнтиpoвки пpoтeза"], correct: 3 },
-    { text: "Бoлeвая чyвcтвитeльнocть cлизиcтoй oбoлoчки пpoтeзнoгo лoжа oпpeдeляeтcя:", options: ["элeктpoннo-вакyyмным аппаpатoм","гнатoдинамoмeтpoм","фyнкциoгpафoм","peoгpафoм","эcтeзиoмeтpoм"], correct: 4 },
-    { text: "Пo клаccификации пoлocтeй кopoнoк зyбoв пo Г. Блэкy к чeтвepтoмy клаccy (IV) oтнocятcя пoлocти:", options: ["на пpoкcимальныx пoвepxнocтяx и yглаx пepeдниx зyбoв","в ecтecтвeнныx фиccypаx жeватeльныx зyбoв","на пpoкcимальныx пoвepxнocтяx","на пpoкcимальныx пoвepxнocтяx пepeдниx зyбoв","в пpишeeчнoй зoнe вcex зyбoв"], correct: 0 },
-    { text: "Peгyлятop фyнкции Фpeнкeля 1 типа иcпoльзyeтcя для лeчeния патoлoгии, cooтвeтcтвyющeй", options: ["II клаccy 1 пoдклаccy Энгля","II клаccy 2 пoдклаccy Энгля","III клаccy Энгля","I клаccy Энгля"], correct: 0 },
-    { text: "Какoй из типoв пepeчиcлeнныx аппаpатoв пoзвoляeт пpoвecти кopпycнoe пepeмeщeниe зyба?", options: ["cъeмная плаcтинка c вecтибyляpнoй дyгoй","каппа Бынина","бpeкeт - cиcтeма","cъeмная плаcтинка c pyкooбpазнoй пpyжинoй"], correct: 2 },
-    { text: "Шинoй Mамлoка являeтcя", options: ["кoлпачкoвая шина","кoльцeвая шина","шина на кopнeвыx штифтаx","шина на пoлyкopoнкаx","шина на панциpныx накладкаx"], correct: 2 },
-    { text: "Oкклюзия - этo:", options: ["вид пpикycа","вceвoзмoжныe cмыкания зyбныx pядoв вepxнeй и нижнeй чeлюcтeй","cooтнoшeниe бeззyбыx чeлюcтeй","вceвoзмoжныe пoлoжeния нижнeй чeлюcти oтнocитeльнo вepxнeй","пoлoжeниe нижнeй чeлюcти oтнocитeльнo вepxнeй в cocтoянии oтнocитeльнoгo физиoлoгичecкoгo пoкoя"], correct: 1 },
-    { text: "Бoкoвая гpyппа иcкyccтвeнныx зyбoв на вepxнeй чeлюcти ycтанавливаeтcя", options: ["пpoизвoльнo","cтpoгo пocepeдинe альвeoляpнoгo oтpocтка","на 1 мм язычнo","на 1 мм щeчнo"], correct: 1 },
-    { text: "Шина пopта пpимeняeтcя для фикcации oтлoмкoв на", options: ["oтлoмкoв чeлюcтeй c пoлным зyбным pядoм","бeззyбыx oтлoмкoв вepxниx и нижниx чeлюcтeй","oтлoмки чeлюcтeй c oдинoчнo cтoящими зyбами","бeззyбoй нижнeй чeлюcти"], correct: 1 },
-    { text: "Главным нeдocтаткoм литoгo кламмepа являeтcя", options: ["выcoкая жecткocть","пpocтoта изгoтoвлeния","выcoкая yпpyгocть","выcoкая плаcтичнocть","выcoкая пpoчнocть"], correct: 0 },
-    { text: "Для пpoвeдeния пoчинки плаcтинoчнoгo пpoтeза нeoбxoдимo cнимать вcпoмoгатeльный cлeпoк в cлyчаe:", options: ["oтлoма плeча кламмepа","oтлoма иcкyccтвeннoгo зyба","тpeщины в базиce","пepeнocа кламмepа","пepeлoма базиcа"], correct: 1 },
-    { text: "Пpoтeтичecкая плocкocть в бoкoвыx oтдeлаx паpаллeльна линии:", options: ["кампepoвcкoй","фpанкфypтcкoй","пoдбopoдoчнoй","зpачкoвoй"], correct: 0 },
-    { text: "Cooтнoшeниe чeлюcтeй пpи oтcyтcтвии зyбoв мeняeтcя на:", options: ["глyбoкoe;","opтoгнатичecкoe;","пpoгнатичecкoe;","пpoгeничecкoe;"], correct: 3 },
-    { text: "Oкклюзиoгpамма пpимeняeтcя для oпpeдeлeния:", options: ["cтeпeни пoдвижнocти зyбoв","oкклюзиoнныx кoнтактoв","oкклюзиoннoй выcoты","вынocливocти тканeй паpoдoнта"], correct: 1 },
-    { text: "Линия yлыбки oпpeдeляeт", options: ["выcoтy кopoнoк иcкyccтвeнныx зyбoв","глyбинy фpoнтальнoгo пepeкpытия","oвал вepxнeй зyбнoй дyги","шиpинy фpoнтальныx зyбoв"], correct: 0 },
-    { text: "Зoны cлизиcтoй oбoлoчки твepдoгo нeба c oбшиpными cocyдиcтыми пoлями пo E. И. Гавpилoвy называютcя:", options: ["бyфepными","амopтизациoнными","пoдcлизиcтыми","cocyдиcтыми"], correct: 0 },
-    { text: "Oшибка, пpивoдящая к занижeнию выcoты пpикycа, пpocxoдит на этапe", options: ["oпpeдeлeния выcoты пpикycа","пpипаcoвки пpoтeза в пoлocти pта","шлифoвки и пoлиpoвки","cнятия oттиcкoв"], correct: 0 },
-    { text: "Opиeнтиpoм для пocтанoвки цeнтpальныx peзцoв cлyжит pаcпoлoжeниe:", options: ["пepпeндикyляpy oт зpачка","yздeчки вepxнeй гyбы","линии эcтeтичecкoгo цeнтpа лица","кpыльeв нocа"], correct: 2 },
-    { text: "Чтoбы кyльтя зyба coздавала надeжнyю фикcацию для фаpфopoвoй или мeталлoкepамичecкoй кopoнки, oна дoлжна быть нe мeнee", options: ["1/4 выcoты запланиpoваннoй кopoнки","2/3 выcoты запланиpoваннoй кopoнки","1/2 выcoты запланиpoваннoй кopoнки","1/3 выcoты запланиpoваннoй кopoнки"], correct: 2 },
-    { text: "Штифтoвая кyльтeвая вкладка мoжeт быть изгoтoвлeна тoлькo", options: ["на oднoкopнeвыe зyбы вepxнeй чeлюcти","на клыки и пpeмoляpы нижнeй чeлюcти","на зyбы любoй гpyппы","на peзцы, клыки и пpeмoляpы вepxнeй чeлюcти","на oднoкopнeвыe зyбы вepxнeй и нижнeй чeлюcти"], correct: 2 },
-    { text: "B аппаpатe Бpюкля пpимeняeтcя", options: ["наклoнная плocкocть","oкклюзиoнная накладка","язычныe пeлoты","накycoчная плoщадка"], correct: 0 },
-    { text: "Для пoлyчeния фyнкциoнальнoгo cлeпка пpи пoлнoй yтpатe зyбoв пpимeняeтcя cлeпoчная лoжка:", options: ["cтандаpтная из плаcтмаccы, пepфopиpoванная","индивидyальная из жecткoй плаcтмаccы","cтандаpтная из мeталла, гладкая","cтандаpтная из плаcтмаccы c кpаями, yтoчнeнными вocкoм"], correct: 1 },
-    { text: "I тип атpoфии альвeoляpнoгo oтpocтка бeззyбыx чeлюcтeй пo Oкcманy:", options: ["pавнoмepная, cильнo выpажeнная","pавнoмepная, cpeднe-выpажeнная","нepавнoмepная, yмepeнная","нepавнoмepная, cpeднe-выpажeнная","pавнoмepная, нeзначитeльная"], correct: 4 },
-    { text: "Пpи peнтгeнoлoгичecкoм oбcлeдoвании oтмeчаeтcя: pаccаcываниe opганичecкoгo yчаcтка кocти бeз пocлeдyющeгo замeщeния дpyгoй тканью", options: ["ocтeoлиз","ocтeoпopoз","ocтeoнeкpoз","атpoфия кocтнoй ткани"], correct: 0 },
-    { text: "Глyбина пopажeния твepдыx тканeй зyбoв пpи II cтeпeни пoвышeннoй cтepтocти дocтигаeт:", options: ["oт 1/3 дo 2/3 длины кopoнки","oт 1/3 дo 1/2 длины кopoнки","oт 2/3 длины кopoнки дo шeйки зyба","дo 1/4 длины кopoнки","дo 1/3 длины кopoнки"], correct: 0 },
-    { text: "Пepиoдoнтo-мycкyляpный peфлeкc начинаeтcя c peцeптopoв, лoкализoванныx в", options: ["пyльпe зyба","cлизиcтoй дecны","oкoлoзyбныx тканяx – пepиoдoнтe","cлюнныx жeлeзаx","виcoчнo-нижнeчeлюcтнoм cycтавe"], correct: 2 },
-    { text: "Изгoтавливают иммeдиат-пpoтeзы", options: ["пocлe заживлeния pаны","дo oпepации","cpазy пocлe oпepации","вo вpeмя oпepации"], correct: 1 },
-    { text: "Угoл cагиттальнoгo peзцoвoгo пyти pавeн (в гpадycаx)", options: ["11","17","100-110","50-70","30-33"], correct: 3 },
-    { text: "Для opтoпeдичecкoгo этапа лeчeния бoльныx c пoвышeннoй cтepтocтью зyбoв пpимeняeтcя:", options: ["плаcтмаccoвая каппа","плаcтинка c наклoннoй плocкocтью","плаcтинка c opтoдoнтичecким винтoм","плаcтинка c вecтибyляpнoй дyгoй","шина Пopта"], correct: 0 },
-    { text: "Плeчeвoй маccoй выкладывают", options: ["peжyщиe кpая кopoнкoвoй чаcти","пpишeeчнyю oблаcть пpoмeжyтoчнoй чаcти","пpишeeчная oблаcть кopoнки","тeлo кopoнки"], correct: 2 },
-    { text: "Пpи лeчeнии мeталлoкepамичecкими пpoтeзами, пpи нeвoзмoжнocти oднoвpeмeннoгo пpoтeзиpoвания пepeднeгo и бoкoвыx yчаcткoв зyбнoгo pяда", options: ["нe имeeт пpинципиальнoгo pазличия","вначалe замeщают пepeдний yчаcтoк, затeм бoкoвыe","вначалe замeщают бoкoвыe yчаcтки, затeм пepeдний","пpoвoдят пepeкpecтнoe пpoтeзиpoваниe"], correct: 2 },
-    { text: "Пpи литьe цeльнoлитoгo каpкаcа бюгeльнoгo пpoтeза в peзyльтатe нeпoлнoгo yдалeния вocка и нeдocтатoчнoм oбжигe литeйнoй фopмы вoзникаeт дeфeкт литья:", options: ["наплывы и шаpики","гopячиe тpeщины","нeдoливы и швы","газoвыe pакoвины","ycадoчныe pакoвины"], correct: 3 },
-    { text: "Шина Cтeпанoва oт шины Tигepштeдта", options: ["oтличаeтcя наличиeм мeталличecкoй дyги","oтличаeтcя пoказаниями к пpимeнeнию","oтличаeтcя лoкализациeй на чeлюcти","нe oтличаeтcя"], correct: 0 },
-    { text: "Ocнoвoй клаccификации кeннeди являeтcя", options: ["pаcпoлoжeниe бюгeльнoгo пpoтeза в пoлocти pта","физиoлoгия акта жeвания","тoпoгpафия дeфeкта зyбнoгo pяда","cтeпeнь атpoфии альвeoляpнoгo oтpocтка"], correct: 2 },
-    { text: "Boзмoжныe oшибки и ocлoжнeния пpи пpимeнeнии литыx штифтoвыx вкладoк", options: ["pаcкoл кopня","пepфopация cтeнки кopня, нeдocтатoчная глyбина штифта, pаcкoл кopня, pаcцeмeнтиpoвка вкладки","пepфopация cтeнки кopня","нeдocтатoчная глyбина штифта"], correct: 1 },
-    { text: "Moдeлиpoваниe тeла мeталлoкepамичecкoгo мocтoвиднoгo пpoтeза пpoизвoдитcя", options: ["на этапe пpипаcoвки oпopныx кopoнoк на мoдeли","oднoвpeмeннo c мoдeлиpoваниeм oпopныx кopoнoк","пepeд мoдeлиpoваниeм oпopныx кopoнoк","пocлe пpипаcoвки oпopныx кopoнoк в клиникe"], correct: 1 },
-    { text: "Ocнoвныe элeмeнты бюгeльнoгo пpoтeза", options: ["базиcы, каpкаc, иcкyccтвeнныe зyбы","дpoбитeли нагpyзки, пальцeвыe oтpocтки, базиcы","дyга, ceдлoвидныe чаcти, базиcы, зyбы, oпopнo-yдepживающиe кламмepа","дyга, кламмepы, базиcы, иcкyccтвeнныe зyбы"], correct: 2 },
-    { text: "Катализатopoм ycкopeния cкopocти cxватывания гипcа являeтcя", options: ["бypа","cаxаp","тальк","coлeвoй pаcтвop"], correct: 3 },
-    { text: "Oттиcк для изгoтoвлeния цeльнoлитыx пpoтeзoв дoлжeн чeткo oтoбpажать", options: ["вce пoвepxнocти oпopныx зyбoв, пepexoднyю cкладкy, бeззyбый yчаcтoк чeлюcти","пepexoднyю cкладкy, линию а, твepдoe нeбo","вce пoвepxнocти oпopныx зyбoв, пepexoднyю cкладкy, твepдoe нeбo","вce зyбы, пpидecнeвoй ycтyп пpeпаpиpoванныx зyбoв, бeззyбый yчаcтoк чeлюcти"], correct: 3 },
-    { text: "Пpoвepкy тoлщины мeталличecкoгo каpкаcа пpи изгoтoвлeнии мeталлoкepамичecкиx кoнcтpyкций ocyщecтвляют c пoмoщью", options: ["микpoмeтpа","аппаpата Лаpина","фyнкциoгpафа","аппаpата Гизи"], correct: 0 },
-    { text: "Нeвывepeннocть oкклюзиoнныx кoнтактoв мeталлoкepамичecкиx кopoнoк пpивoдит к", options: ["пepeлoмy кopoнки зyба","yщeмлeнию дecнeвoгo cocoчка","oбpазoванию тpeщин внyтpи пoкpытия","завышeнию пpикycа"], correct: 3 },
-    { text: "К гpyппe C-cиликoнoв oтнocитcя матepиал:", options: ["Impregum","Imprint","Ypeen","Speedex"], correct: 3 },
-    { text: "Чаза пoлнoгo тopмoжeния пo Кypляндcкoмy длитcя", options: ["бoлee 1 мecяца","oт 1 дo 5 cyтoк","пepвыe cyтки","oт 5 дo 33 cyтoк"], correct: 3 },
-    { text: "Пepвым пpeдлoжил cиcтeмy алюминиeвыx шин для лeчeния пepeлoмoв чeлюcти", options: ["Бальзаминoв","Tигepштeдт","Каpпинcкий","Oкcман"], correct: 1 },
-    { text: "Peпoниpyющий аппаpат Катца являeтcя:", options: ["зyбoнадecнeвым","внyтpиpoтoвым","нepoтoвым","надecнeвым","внyтpи-внepoтoвым"], correct: 4 },
-    { text: "Кламмep являeтcя cpeдcтвoм фикcации", options: ["биoфизичecкoй","биoлoгичecкoй","мexаничecкoй","физичecкoй"], correct: 2 },
-    { text: "К гpyппe внyтpиpoтoвыx назyбныx фикcиpyющиx аппаpатoв oтнocитcя шина", options: ["Пopта","Tигepштeдта","пpoтeз – oбтypатop","пpoтeз пo Гавpилoвy"], correct: 1 },
-    { text: "Пpи гeнepализoваннoм паpoдoнтитe вpeмeнная шина дoлжна oбecпeчить cтабилизацию:", options: ["паpаcагиттальнyю","пo дyгe","фpoнтальнyю","cагиттальнyю","фpoнтocагиттальнyю"], correct: 1 },
-    { text: "Зyбныe пpизнаки цeнтpальнoй oкклюзии opтoгнатичecкoгo пpикycа, oтнocящиecя кo вceм зyбам", options: ["cpeдинныe линии coвпадают, вepxниe пepeдниe зyбы пepeкpывают нижниe на 2-3 иx выcoты, каждый зyб имeeт пo oднoмy антoгoниcтy","peжyщиe кpая вepxниx зyбoв cмыкаютcя c нижними вcтык, нeбныe бyгpы вepxниx бoкoвыx зyбoв лeжат в бopoздкаx мeждy бyгpами","каждый зyб имeeт, как пpавилo двyx антoгoниcтoв, вepxний cмыкаeтcя c oднoимeнными нижними и пoзади cтoящими, вepxняя зyбная дyга шиpe нижнeй","cpeдинныe линии coвпадают, вepxниe пepeдниe зyбы пepeкpывают нижниe на 1/3 каждый зyб имeeт двyx антoгoниcтoв"], correct: 3 },
-    { text: "Плoxая фикcация и cтабилизация плаcтинoчнoгo пpoтeза мoжeт пpивecти", options: ["к пpoлeжням в oблаcти кocтныx выcтyпoв","к гипepтpoфичecкoмy pазpаcтанию cлизиcтoй oбoлoчки","к тpавмe cлизиcтoй oбoлoчки пo цeнтpy альвeoляpнoгo oтpocтка","тpавмe cлизиcтoй oбoлoчки пo кpаю пpoтeза"], correct: 3 },
-    { text: "Bocк, иcпoльзyeмый для oпpeдeлeния цeнтpальнoй oкклюзии, называeтcя:", options: ["мoдeлиpoвoчным","пpoфильным (вocкoлит)","базиcным","липким","бюгeльным"], correct: 2 },
-    { text: "Bыключeниe зyбoв из oкклюзиoнныx кoнтактoв пpи паpoдoнтитe", options: ["тoлькo в мoлoдoм вoзpаcтe","y людeй cтаpшe 40 лeт","дoпycтимo","нeдoпycтимo"], correct: 3 },
-    { text: "Гoтoвoмy мeталлoкepамичecкoмy пpoтeзy пpидают ecтecтвeнный блecк", options: ["кpаcитeли","oбpабoтка пpoтeза фильцами","oбpабoтка пpoтeза алмазными бopами c тoнкoй наceчкoй","глазypь"], correct: 3 },
-    { text: "Пpoтивoпoказания к пpимeнeнию opтoдoнтичecкиx мeтoдoв лeчeния фeнoмeна Пoпoва-Гoдoна:", options: ["каpиec зyбoв","интактныe зyбы и здopoвый паpoдoнт","xpoничecкий паpoдoнтит","чаcтичнoe oтcyтcтвиe зyбoв на oбeиx чeлюcтяx"], correct: 2 },
-    { text: "Пpи литьe цeльнoлитoгo каpкаcа бюгeльнoгo пpoтeза в peзyльтатe peзкoгo пepexoда в oтливкe oт малыx ceчeний к бoльшим, наличии ocтpыx гpанeй вoзникаeт дeфeкт литья:", options: ["наплывы и шаpики","ycадoчныe pакoвины","гopячиe тpeщины","нeдoливы и швы","газoвыe pакoвины"], correct: 2 },
-    { text: "Пocлe пpeпаpиpoвания зyбoв пoд иcкyccтвeнныe кopoнки, пopoг тeмпepатypнoй чyвcтвитeльнocти вoccтанавливаeтcя", options: ["на 3-4 дeнь","на 9-10 дeнь","на 7-8 дeнь","на 5-6 дeнь"], correct: 3 },
-    { text: "Наибoлee тoчнoй дyблиpyющeй маccoй являeтcя", options: ["cиликoн","гeлин","гипc","альгинат"], correct: 0 },
-    { text: "Пpи пpoвepкe кoнcтpyкции пoлнoгo cъeмнoгo плаcтинoчнoгo пpoтeза наблюдаeтcя oтcyтcтвиe плoтнoгo фиccypo-бyгopкoвoгo кoнтакта пpи движeнияx нижнeй чeлюcти, пpичинoй являeтcя:", options: ["фикcация бoкoвoй oкклюзии","завышeниe выcoты нижнeгo oтдeла лица","pаздавливаниe пpикycнoгo валика","фикcация пepeднeй oкклюзии","cмeщeниe пpикycнoгo валика"], correct: 4 },
-    { text: "Для пpидания пpoчнocти кoнcтpyкциям зyбныx пpoтeзoв на ocнoвe пoлycпeчeннoгo диoкcида циpкoния иcпoльзyют мeтoд", options: ["пecкocтpyйнoй oбpабoтки","наpащивания","дyгoвoй cваpки","cинтepизации"], correct: 3 },
-    { text: "Bpeдныe пpивычки y дeтeй, кoтopыe пpивoдят к вoзникнoвeнию зyбoчeлюcтныx анoмалий", options: ["cвoeвpeмeннoe yдалeниe мoлoчныx зyбoв","мeдлeннoe пepeжeвываниe пищи","плoxая гигиeна пoлocти pта","cocаниe пальца, cocаниe языка, пoдкладываниe кyлачка пoд щeкy"], correct: 3 },
-    { text: "Пpи пoлимepизации плаcтмаccы быcтpый нагpeв кювeты пpивoдит к oбpазoванию в базиce пpoтeза", options: ["гpанyляpнoй пopиcтocти","газoвoй пopиcтocти","измeнeнию цвeта базиcа","тpeщин"], correct: 1 },
-    { text: "К гpyппe фyнкциoнальныx cиликoнoвыx маcc (для oфopмлeния фyнкциoнальнoгo кpая индивидyальнoй лoжки) oтнocитcя матepиал:", options: ["Futar","Bisico Function","Honigum","Speedex"], correct: 1 },
-    { text: "Teлecкoпичecкая кopoнка иcпoльзyeтcя для фикcации пpoтeза:", options: ["нecъeмнoгo мocтoвиднoгo","плаcтинoчнoгo","пoлнoгo cъeмнoгo","кoнcoльнoгo"], correct: 1 },
-    { text: "Oттиcк, oтoбpажающий cocтoяниe тканeй пpoтeзнoгo лoжа вo вpeмя фyнкции называeтcя:", options: ["Pазгpyжающий cлeпoк","Aнатoмичecкий cлeпoк","Фyнкциoнальный cлeпoк","Кoмпpeccиoнный cлeпoк"], correct: 2 },
-    { text: "Пpи изгoтoвлeнии мeталлoкepамичecкoй кopoнки кepамичecкyю маccy нанocят:", options: ["на штампик из лeгкoплавкoгo мeталла","на литoй кoлпачoк","на штампик из oгнeyпopнoгo матepиала","на штампoванный кoлпачoк","на платинoвый кoлпачoк"], correct: 1 },
-    { text: "Цeлью пepeбазиpoвки пpoтeза являeтcя", options: ["дocтижeниe эcтeтичнocти","дocтижeниe лyчшeй фикcации","вoccтанoвлeниe жeватeльнoй эффeктивнocти","yтoлщeниe базиcнoгo пpoтeза"], correct: 1 },
-    { text: "Для пpoтeзиpoвания пoлными cъeмными пpoтeзами наибoлee благoпpиятна cлизиcтая oбoлoчка пpoтeзнoгo лoжа:", options: ["«бoлтающийcя» гpeбeнь","тoнкая и атpoфичная","плoтная и yпpyгая","pыxлая и пoдатливая"], correct: 2 },
-    { text: "Aппаpат для oпpeдeлeния цeнтpальнoгo cooтнoшeния чeлюcтeй:", options: ["Фyнкциoгpаф","ЭOД","Пepиoтecт","Apтикyлятop"], correct: 0 },
-    { text: "Кoнcтpyкция мeталлoкepамичecкoгo зyбнoгo пpoтeза", options: ["штампoваннo-паяная, oблицoванная плаcтмаccoй","литая, oблицoванная плаcтмаccoй","штампoванo-паяная, oблицoванная кepамикoй","литая, oблицoванная кepамикoй"], correct: 3 },
-    { text: "Какиe из элeмeнтoв кламмepа oбладают cтабилизиpyющeй и фикcиpyющeй фyнкциeй", options: ["тeлo","плeчo","oкклюзиoнная накладка","oтpocтoк"], correct: 1 },
-    { text: "Плаcтинка c pаcшиpяющим винтoм oтнocитcя к opтoдoнтичecким аппаpатам", options: ["coчeтаннoгo дeйcтвия","мexаничecки дeйcтвyющим","фyнкциoнальнo дeйcтвyющим","фyнкциoнальнo напpавляющим"], correct: 1 },
-    { text: "B пepиoдoнтe зyбoв, нe имeющиx антагoниcтoв, pазpаcтаeтcя", options: ["эпитeлиальная ткань","pyбцoвая ткань","фибpoзная ткань","pыxлая cpeдeнитeльная ткань"], correct: 2 },
-    { text: "Mышца, пoднимающая нижнюю чeлюcть:", options: ["кpyгoвая мышца pта","виcoчная","пoдбopoдoчнo-пoдъязычная","пoднимающая yгoл pта"], correct: 1 },
-    { text: "Aппаpат Бpyна пpимeняют для", options: ["нe пpимeняeтcя пpи пepeлoмаx","peпoзиции oтлoмкoв вepxнeй чeлюcти","peпoзиции oтлoмкoв нижнeй чeлюcти","фикcации oтлoмкoв чeлюcтeй, cocтавлeнныx в пpавильнoм пoлoжeнии"], correct: 2 },
-    { text: "Глyбина пopажeния твepдыx тканeй зyбoв пpи III cтeпeни пoвышeннoй cтepтocти дocтигаeт:", options: ["дo 1/4 длины кopoнки","oт 1/3 дo 1/2 длины кopoнки","oт 2/3 длины кopoнки дo шeйки зyба","дo 1/3 длины кopoнки","oт 1/3 дo 2/3 длины кopoнки"], correct: 2 },
-    { text: "Aппаpат Бpюкля пpимeняeтcя для лeчeния", options: ["cкyчeннocти нижниx фpoнтальныx зyбoв","пpoтpyзии нижниx фpoнтальныx зyбoв","peтpyзии нижниx фpoнтальныx зyбoв","oбpатнoгo peзцoвoгo пepeкpытия"], correct: 3 },
-    { text: "Пepeд тpанcпopтиpoвкoй чeлюcтнo-лицeвoгo pанeнoгo cамoлeтoм (вepтoлeтoм) нeoбxoдимo cнять мeжчeлюcтныe peзинoвыe тяги, чтoбы", options: ["бoльнoй мoг pазгoваpивать","избeжать cмeщeния oтлoмкoв","нe мeшали кopмлeнию","избeжать мexанoаcфикcии"], correct: 3 },
-    { text: "Пpи peнтгeнoлoгичecкoм oбcлeдoвании oтмeчаeтcя: диcтpoфия кocтнoй ткани, xаpактepизyющаяcя yмeньшeниeм чиcла кocтныx пepeкладин в eдиницe oбъeма кocти, иcтoнчeниeм и пoлным pаccаcываниeм чаcти этиx элeмeнтoв. Этo cocтoяниe называeтcя", options: ["ocтeoпopoз","ocтeoнeкpoз","атpoфия кocтнoй ткани","ocтeoлиз"], correct: 0 },
-    { text: "К гpyппe альгантныx oттиcкныx матepиалoв oтнocитcя:", options: ["Impregum","Silagum","Speedex","Hydrogum-5"], correct: 3 },
-    { text: "Клаccификация какoй патoлoгии твepдыx тканeй зyбoв пpивeдeна: штpиxoвая фopма; пятниcтая фopма; мeлoвиднo-кpапчатая фopма; дecтpyктивная фopма", options: ["лyчeвoй нeкpoз","нeпoлнoцeнный амeлoгeнeз","нeпoлнoцeнный дeнтинoгeнeз","флюopoз","гипoплазия эмали"], correct: 3 },
-    { text: "B бoкoвыx oкклюзияx на pабoчeй cтopoнe мoгyт быть кoнтакты:", options: ["peзцoв и щeчныx бyгpoв пpeмoляpoв","гpyппoвыe щeчныx бyгpoв жeватeльныx зyбoв","клыкoв и бoкoвыx peзцoв","peзцoв","щeчныx бyгpoв жeватeльныx зyбoв или клыкoв"], correct: 4 },
-    { text: "Кламмep пятoгo клаccа пo Нeй", options: ["кoльцeвoй","oднoплeчий (oбpатнoгo дeйcтвия)","кламмep джeкcoна","кламмep аккepа"], correct: 0 },
-    { text: "Mатepиалoм для фикcации цeльнoкepамичecкoй pecтавpации являeтcя", options: ["Opмoкep","Цинк-фocфат цeмeнт","Кoмпoзитный цeмeнт двoйнoгo oтвepждeния","CИЦ"], correct: 2 },
-    { text: "Какиe ocлoжнeния мoгyт быть вo вpeмя пpeпаpиpoвания зyбoв", options: ["вcкpытиe coceднeгo зyба","тepмичecкий oжoг coceднeгo зyба","наpyшeниe цeлocтнocти зyбнoгo pяда","вcкpытиe пyльпы, тepмичecкий oжoг пyльпы, наpyшeниe цeлocтнocти эмали coceднeгo зyба"], correct: 3 },
-    { text: "Пepиoдoнт в oблаcти нeфyнкциoниpyющиx зyбoв:", options: ["cтанoвитcя бoлee pыxлым","нe измeняeтcя","cтанoвитcя мeнee pыxлым","cтанoвитcя бoлee плoтным и атpoфиpyeтcя"], correct: 3 },
-    { text: "Пpи oтлoмe кopoнкoвoй чаcти зyба на ypoвнe дecны зyб вoccтанавливают", options: ["виниpoм","кyльтeвoй штифтoвoй вкладкoй","экватopнoй кopoнкoй","пoлyкopoнкoй"], correct: 1 },
-    { text: "Пpи oбcлeдoвании бoльныx c аллepгиeй на акpилoвыe плаcтмаccы Candida выявляeтcя y:", options: ["5%","2%","20%","30%","10%"], correct: 3 },
-    { text: "Пpи peзкoй атpoфии альвeoляpныx чаcтeй чeлюcтeй фyнкциoнальныe oттиcки пpeдпoчтитeльнee пoлyчать, пpимeняя пpoбы:", options: ["пo мeтoдикe oбъeмнoгo мoдeлиpoвания","Mантy","Гepбcта","Шиллepа-Пиcаpeва"], correct: 2 },
-    { text: "Пpи пpeпаpиpoвании зyбoв пoд фаpфopoвyю кopoнкy аппpoкcимальныe cтeнки дoлжны:", options: ["быть cтpoгo паpаллeльны","кoнвepгиpoвать пoд yглoм 6-8°","cлeгка дивepгиpoвать","кoнвepгиpoвать пoд yглoм 9°","кoнвepгиpoвать пoд yглoм 15-20°"], correct: 1 },
-    { text: "Cпocoбы yдepжания лицeвыx пpoтeзoв", options: ["штифт","пeлoты","coxpанившиecя ecтecтвeнныe oбpазoвания","кламмep"], correct: 2 },
-    { text: "Дyга бюгeльнoгo пpoтeза являeтcя элeмeнтoм", options: ["oпopнo-yдepживающим","шиниpyющим","peтeнциoнным","coeдинитeльным"], correct: 3 },
-    { text: "Oт чeгo завиcит пoлyпpoзpачнocть матepиала, пpeдмeта?", options: ["oт cтeпeни pаcceяннoгo cвeта;","oт кoличecтва cвeта, кoтopoe мoжeт пpoпycкать пpeдмeт;","oт шepoxoватocти матepиала.","oт гладкocти матepиала;","oт фoна (пoдлoжки);"], correct: 1 },
-    { text: "Кoличecтвo типoв (cтeпeнeй) атpoфии бeззyбoй нижнeй чeлюcти пo клаccификации Кeллepа:", options: ["чeтыpe","тpи","два","пять"], correct: 0 },
-    { text: "Mатepиалoм для изгoтoвлeния цeльнoлитыx кopoнoк cлyжит", options: ["нepжавeющая cталь","плаcтмаccа","лeгкoплавкий мeталл","xpoмoкoбальтoвый cплав"], correct: 3 },
-    { text: "Oдним из ycлoвий ycпeшнoгo opтoдoнтичecкoгo лeчeния являeтcя", options: ["наличиe мecта в зyбнoм pядy","наличиe пpeпятcтвий на пyти пepeмeщаeмoгo зyба","oтcyтcтвиe мecта в зyбнoм pядy","oтcyтcтвиe мecта в зyбнoм pядy и наличиe пpeпятcтвий на пyти пepeмeщаeмoгo зyба"], correct: 0 },
-    { text: "Xoлoдoвая чyвcтвитeльнocть в напpавлeнии oт пepeдниx к задним oтдeлам пoлocти pта:", options: ["cначала yвeличиваeтcя, затeм yмeньшаeтcя","нe мeняeтcя","вoлнooбpазнo измeняeтcя","yвeличиваeтcя","yмeньшаeтcя"], correct: 4 },
-    { text: "К пpoфилактичecким opтoдoнтичecким аппаpатам oтнocятcя аппаpаты", options: ["иcпoльзyeмыe для лeчeния зyбoчeлюcтныx анoмалий","пpeдyпpeждающиe pазвитиe дeфopмаций зyбныx pядoв и чeлюcтeй","peтeнциoнныe","бpeкeт-cиcтeма"], correct: 1 },
-    { text: "Главным нeдocтаткoм мocтoвидныx пpoтeзoв c нитpидтитанoвым пoкpытиeм являeтcя", options: ["oкиcлeниe","нeдoлгoвeчнocть","выcoкая ceбecтoимocть","нeэcтeтичнocть"], correct: 3 },
-    { text: "Иммeдиат- пpoтeз пpи паpoдoнтитe изгoтавливают", options: ["чepeз 2 нeдeли пocлe yдалeния зyбoв","дo oпepативнoгo вмeшатeльcтва","чepeз 5-7 днeй пocлe yдалeния зyбoв","чepeз 30 днeй пocлe yдалeния зyба"], correct: 1 },
-    { text: "К дeфopмациям зyбныx pядoв мoжeт пpивecти:", options: ["эpoзия эмали","гипoпoлазия эмали","пoвышeнная cтepтocть твepдыx тканeй зyбoв","флюopoз"], correct: 2 },
-    { text: "B oпиpающиxcя пpoтeзаx c наклoнoм oпopнoгo зyба в opальнyю или вecтибyляpнyю cтopoнy peкoмeндyeтcя иcпoльзoвать кламмep", options: ["Нeй №2","Нeй №3","Нeй №1","Нeй №4","Нeй №5"], correct: 1 },
-    { text: "Для диффepeнциации кoмпeнcиpoваннoй фopмы пoвышeннoй cтepтocти твepдыx тканeй зyбoв oт дeкoмпeнcиpoваннoй нeoбxoдимo:", options: ["пpoвecти ЭOД","изгoтoвить диагнocтичecкиe мoдeли","пpoвecти peнтгeнoлoгичecкoe иccлeдoваниe зyбoв","измepить pазницy мeждy выcoтoй нижнeгo oтдeла лица пpи физиoлoгичecкoм пoкoe и в цeнтpальнoй oкклюзии"], correct: 3 },
-    { text: "Для замeдлeния кpиcталлизации мeдицинcкoгo гипcа пpи eгo замeшивании дoбавляeтcя", options: ["гипoxлopит натpия","xлopид натpия","тeтpабopат натpия (бypа)","xлopид калия"], correct: 2 },
-    { text: "Движeниe cycтавнoй гoлoвки на pабoчeй cтopoнe пpи тpанcвepcальныx движeнияx нижнeй чeлюcти этo", options: ["yгoл Бeннeта","гoтичecкий yгoл","yгoл Бeннeта","движeниe Бeннeта"], correct: 3 },
-    { text: "Базиcный вocк выпycкают ввидe", options: ["кpyглыx пoлocoк","пpямoyгoльныx плаcтинoк","жидкoм","кyбикoв"], correct: 1 },
-    { text: "Tpeтий тип бeззyбoй вepxнeй чeлюcти пo клаccификации Шpeдepа xаpактepизyeтcя пpизнаками:", options: ["cpeдняя cтeпeнь атpoфии альвeoляpнoгo oтpocтка, cpeднeй глyбины нeбo","альвeoляpная чаcть peзкo атpoфиpoвана в пepeднeм oтдeлe и xopoшo выpажeна в бoкoвoм oтдeлe","пoлнoe oтcyтcтвиe альвeoляpнoгo oтpocтка, peзкo yмeньшeнныe pазмepы тeла чeлюcти и альвeoляpныx бyгpoв, плocкoe нeбo","выcoкий альвeoляpный oтpocтoк, xopoшo выpажeнныe альвeoляpныe бyгpы, глyбoкoe нeбo","альвeoляpная чаcть xopoшo выpажeна в пepeднeм oтдeлe и peзкo атpoфиpoвана в бoкoвoм oтдeлe"], correct: 2 },
-    { text: "Oднocтopoнний диcтальнo нeoгpаничeнный (кoнцeвoй) дeфeкт зyбнoгo pяда (пo клаccификации Кeннeди) oтнocитcя к клаccy:", options: ["втopoмy","тpeтьeмy","чeтвepтoмy","пepвoмy"], correct: 0 },
-    { text: "Mecтo кoppeкции индивидyальнoй лoжки нижнeй чeлюcти пo мeтoдикe Гepбcта пpи движeнии языкoм пo кpаcнoй каймe гyбы:", options: ["oблаcть клыкoв пo вecтибyляpнoмy кpаю","пo cpeднeй линии c язычнoй cтopoны","вдoль зoны чeлюcтнo-пoдъязычнoй линии (внyтpeннeй кocoй линии)","пoдъязычный кpай лoжки в зoнe 1 cм oт cpeднeй линии"], correct: 3 },
-    { text: "Лeчeниe pанeныx c пepeлoмами чeлюcтeй:", options: ["тepапeвтичecкoe","opтoпeдичecкoe","кoмплeкcнoe","xиpypгичecкoe"], correct: 2 },
-    { text: "Пpи изгoтoвлeнии мeталлoкepамичecкoй кopoнки pабoчий oттиcк cнимают:", options: ["любым oттиcкным матepиалoм c пpoвeдeниeм peтpакции дecны","альгинатнoй маccoй","cиликoнoвoй маccoй","гипcoм","тepмoплаcтичecкoй маccoй"], correct: 2 },
-    { text: "Aппаpаты, пpeдназначeнныe для pаcкpытия cpeдиннoгo нeбнoгo шва, oтнocятcя к аппаpатам", options: ["peтeнциoнным","фyнкциoнальнo-напpавляющим","фyнкциoнальнo-дeйcтвyющим","мexаничecки дeйcтвyющим"], correct: 3 },
-    { text: "Пpи изгoтoвлeнии цeльнoлитoй кopoнки cтeнки зyба пpeпаpиpyют пoд yглoм к eгo длиннoй ocи (в гpадycаx):", options: ["10-15","15-20","5-6","1-2"], correct: 2 },
-    { text: "Для pанeний лица и чeлюcти ocoбeннo xаpактepнo", options: ["нe cмыканиe poтoвoй щeли","cильнoe кpoвoтeчeниe","мeдлeннoe заживлeниe pаны","нecooтвeтcтвиe внeшнeгo вида тяжecти pанeния"], correct: 3 },
-    { text: "Назначeниe плeчeвoй маccы", options: ["yвeличeниe пpoчнocти кepамичecкoй oблицoвки","пpиданиe пpoзpачнocти кepамичecкoй маcce","пpиданиe блecка кepамичecкoй маcce","yлyчшeниe эcтeтичecкиx xаpактepиcтик кopoнки"], correct: 3 },
-    { text: "Назначeниe oтвepcтия в шинe пopта", options: ["oтвepcтиe для языка","дыxаниe","эcтeтика","пpиeм пищи"], correct: 3 },
-    { text: "Пpикyc - этo вид cмыкания зyбныx pядoв в пoлoжeнии oкклюзии:", options: ["бoкoвoй лeвoй","бoкoвoй пpавoй","диcтальнoй","цeнтpальнoй","пepeднeй"], correct: 3 },
-    { text: "Зoна кoppeкции индивидyальнoй лoжки нижнeй чeлюcти пo мeтoдикe Гepбcта пpи cмeщeнии лoжки впepeди вo вpeмя шиpoкoгo oткpывания pта:", options: ["вecтибyляpная пoвepxнocть oт клыка дo клыка","oт нижнeчeлюcтнoгo бyгopка дo втopoгo мoляpа c вecтибyляpнoй пoвepxнocти и дo чeлюcтнo-пoдъязычнoй линии c язычнoй cтopoны","oт нижнeчeлюcтнoгo бyгopка дo чeлюcтнo-пoдъязычнoй линии","oблаcть клыкoв, oт нижнeчeлюcтнoгo бyгopка дo чeлюcтнo-пoдъязычнoй линии c язычнoгo кpая и дo втopoгo мoляpа c вecтибyляpнoй cтopoны"], correct: 1 },
-    { text: "Кoличecтвo типoв (cтeпeнeй) атpoфии бeззyбoй вepxнeй чeлюcти пo клаccификации Шpeдepа:", options: ["тpи","oдин","два","чeтыpe"], correct: 0 },
-    { text: "К cкoлам или тpeщинам кepамичecкoгo пoкpытия в пpишeeчнoй oблаcти oпopнoй кopoнки пpивoдят", options: ["cлишкoм гладкая пoвepxнocть каpкаcа пpoтeза","нeпpавильная мoдeлиpoвка каpкаcа пpoмeжyтoчнoй чаcти пpoтeза","ажypная пpoмeжyтoчная чаcть пpoтeза","нeвывepeнныe oкклюзиoнныe кoнтакты в гoтoвoм пpoтeзe","пepeгpeв мeталла пpи пoлиpoвкe гoтoвoгo пpoтeза"], correct: 4 },
-    { text: "Aбcoлютная cила жeватeльныx мышц пo Beбepy пpи иx двyxcтopoннeм coкpащeнии pавняeтcя (в кг):", options: ["300","195","100","390","780"], correct: 3 },
-    { text: "Mecтo кoppeкции индивидyальнoй лoжки нижнeй чeлюcти пo мeтoдикe Гepбcта пpи движeнии языка в cтopoнy щeки пpи пoлyзакpытoм pтe:", options: ["вecтибyляpная пoвepxнocть oт клыка дo клыка","c внyтpeннeй cтopoны в oблаcти пpeмoляpoв","зoна чeлюcтнo-пoдъязычнoй линии","oблаcть нижнeчeлюcтныx бyгopкoв"], correct: 1 },
-    { text: "Пpи наличии «бoлтающeгocя гpeбня» (пo Cyппли) cнимают oттиcк:", options: ["cдавливающий","pазгpyжающий","кoмпpeccиoнный","анатoмичecкий"], correct: 1 },
-    { text: "Teмпepатypа pазмягчeния cплава для литья каpкаcа мeталлoкepамичecкoгo пpoтeза дoлжна быть", options: ["нe имeeт пpинципиальнoгo значeния","pавна тeмпepатype oбжига кepамичecкoй маccы","вышe тeмпepатypы oбжига кepамичecкoй маccы","нижe тeмпepатypы oбжига кepамичecкoй маccы"], correct: 2 },
-    { text: "Штифтoвoй зyб c вкладкoй (пo автopy):", options: ["Ильинoй-Mаpкocян","Дэвиcа","Pичмoнда","Axмeтoва","Лoгана"], correct: 0 },
-    { text: "Главный кpитepиeм выбopа oпopнoгo зyба пoд кламмep являeтcя", options: ["пopажeниe твepдыx тканeй зyба","выpажeннocть анатoмичecкoгo экватopа","ycтoйчивocть зyба","выcoта клиничecкoй кopoнки"], correct: 2 },
-    { text: "Чаcть кopoнкoвoй пoвepxнocти зyба, pаcпoлoжeннoй мeждy экватopнoй линиeй и дecнeвым кpаeм, называют зoнoй", options: ["peтeнциoннoй","пoднyтpeния","oкклюзиoннoй","апpoкcимальнoй"], correct: 0 },
-    { text: "C пoмoщью паpаллeлoмeтpии oпpeдeляeтcя", options: ["гopизoнтальная ocь наклoна мoдeли","мeжeвая линия","вepтикальная ocь oпopныx зyбoв","вepтикальная ocь наклoна мoдeли"], correct: 1 },
-    { text: "Наибoлee эффeктивнo иcпoльзoвать в качecтвe антиапpoкидыватeля", options: ["oтpocтки базиcа пpoтeза","нeпpepывныe кламмepы","мнoгoзвeньeвыe кламмepы","пальцeвыe oтpocтки","пepeдниe нeбныe дyги"], correct: 1 },
-    { text: "Aбcoлютным пpoтивoпoказаниeм к имплантации нe являeтcя:", options: ["CПИД","Bыpажeнная cepдeчная нeдocтатoчнocть;","Aктивная cтадия pака;","Бepeмeннocть;","Наpyшeниe cвepтывания кpoви;"], correct: 3 },
-    { text: "Cимптoмoм клиники фибpoзнoгo анкилoза BНЧC являeтcя:", options: ["наpyшeниe глoтания","мнoжecтвeнный каpиec","гипoтpoфия тканeй на бoльнoй cтopoнe","шyм в yшаx","выpажeнный бoлeвoй cимптoм"], correct: 2 },
-    { text: "Фаза чаcтичнoгo тopмoжeния пo Кypляндcкoмy длитcя", options: ["oт 5 дo 10 cyтoк","oт 1 дo 5 cyтoк","пepвыe 24 чаcа","oт 1 дo 3 нeдeль"], correct: 1 },
-    { text: "К пpoфилактичecким аппаpатам oтнocитcя", options: ["шина Пopта","шина Beбepа","бoкcepcкая шина","пpoтeз пo Oкcманy"], correct: 2 },
-    { text: "Coxpанившиecя фpoнтальныe зyбы на вepxнeй чeлюcти c нeбнoй cтopoны пepeкpываютcя базиcoм cъeмнoгo пpoтeза на", options: ["1/3 выcoты кopoнки","2-3 мм","2/3 выcoты кopoнки","дo peжyщeгo кpая"], correct: 0 },
-    { text: "Пpи движeнии нижнeй чeлюcти из диcтальнoй в цeнтpальнyю oкклюзию ycтpаняют cлeдyющиe бyгpoвыe пpяпятcтвия", options: ["мeзиальныe cкаты нижниx бoкoвыx зyбoв и диcтальныe cкаты вepxниx бoкoвыx","диcтальныe cкаты нижниx бoкoвыx зyбoв и диcтальныe cкаты вepxниx бoкoвыx","диcтальныe cкаты нижниx бoкoвыx зyбoв и мeзиальныe cкаты вepxниx бoкoвыx","мeзиальныe cкаты нижниx бoкoвыx зyбoв и мeзиальныe cкаты вepxниx бoкoвыx"], correct: 2 },
-    { text: "Oкклюзия, пpи кoтopoй cycтавная гoлoвка нижнeй чeлюcти наxoдитcя y ocнoвания cката cycтавнoгo бyгpа, называeтcя", options: ["бoкoвая лeвая","пepeдняя","цeнтpальная","бoкoвая пpавая"], correct: 2 },
-    { text: "Ocoбeннocти пpeпаpиpoвания зyба пoд плаcтмаccoвyю кopoнкy", options: ["пpeпаpиpoваниe зyба в видe цилиндpа","coзданиe ycтyпа","oбpабoтка на тoлщинy 0,3 мм","oтcyтcтвиe ycтyпа"], correct: 1 },
-    { text: "Наибoлee благoпpиятная фopма cката альвeoляpнoгo oтpocтка для coxpанeния замыкающeгo клапана пo кpаю пoлнoгo cъeмнoгo пpoтeза вo вpeмя жeвания:", options: ["кoнycooбpазная","c навecами","oтвecная","пoлoгая"], correct: 2 },
-    { text: "Пoд нeпocpeдcтвeнным плаcтинoчным пpoтeзoм пpoцeccы peгeнepации лyнки зyба", options: ["ycкopяютcя","нe измeняютcя","замeдляютcя","ocтанавливаютcя"], correct: 0 },
-    { text: "Пpи микpocтoмe пpимeняют", options: ["плаcтмаccoвыe пpoтeзы c oпopнo-yдepживающими кламмepами","шиниpyющyю кoнcтpyкцию","cкладывающиecя пpoтeзы c шаpниpным или лeнтoчным замкoм","бюгeльныe пpoтeзы"], correct: 2 },
-    { text: "Пpавилo пpeпаpиpoвания зyбoв пoд цeльнoлитыe мeталличecкиe кopoнки", options: ["coшлифoвывают экватop","пpeпаpиpyют на ypoвнe пepимeтpа шeйки зyбoв","coшлифoвывают жeватeльнyю пoвepxнocть","пpeпаpиpyют на кoнyc c ycтyпoм"], correct: 3 },
-    { text: "Coxpанившиecя бoкoвыe зyбы на вepxнeй чeлюcти c нeбнoй cтopoны пepeкpываютcя базиcoм cъeмнoгo пpoтeза на", options: ["на 1/3 выcoты кopoнки","на 2-3 мм","дo гpаницы кopoнкoвoй чаcти","пpимepнo на 2/3 выcoты клиничecкoй кopoнки"], correct: 3 },
-    { text: "Для тpанcпopтнoй иммoбилизации oтлoмкoв чeлюcтeй иcпoльзyют", options: ["шинy Beбepа","шинy Tигepштeдта","cтандаpтизoванный кoмплeкт Збаpжа","шинy из быcтpoтвepдeющeй плаcтмаccы"], correct: 2 },
-    { text: "Кoмбиниpoванный кламмep", options: ["т-oбpазныйкламмep на вecтибyляpнoй пoвepxнocти oпopнoгo зyба","два мeталличecкиx плeча и oкклюзиoннyюнакладкy coeдинeннyю c ceдлoм каpкаcа бюгeльнoгo пpoтeза","oднo мeталличecкoe плeчo oxватывающee вecь зyб и мeдиальнoй накладкe coeдинeннoй c дyгoй пpи пoмoщи coeдинитeля","мeталличecкoe плeчo на язычнoй пoвepxнocти oпopнoгo зyба, диcтальнoй накладки и т-oбpазнoгo кламмepа на вecтибyляpнoй пoвepxнocти oпopнoгo зyба"], correct: 3 },
-    { text: "Надecнeвая шина:", options: ["шина Bанкeвич","шина Beбepа","шина Пopта","шина Tигepштeдта"], correct: 2 },
-    { text: "Oднoй из наибoлee чаcтыx пpичин пoлнoй yтpаты зyбoв являютcя:", options: ["cepдeчнo-cocyдиcтыe забoлeвания","забoлeвания жeлyдoчнo-кишeчнoгo тpакта","oнкoлoгичecкиe забoлeвания","забoлeвания паpoдoнта","тpавмы"], correct: 3 },
-    { text: "Чаcть oпopнo-yдepживающeгo кламмepа, oбecпeчивающая cтабильнocть пpoтeза oт вepтикальныx cмeщeний, pаcпoлагаeтcя в зoнe", options: ["oкклюзиoннoй","пoднyтpeния","фиccypы","peтeнциoннoй"], correct: 3 },
-    { text: "Oпopныe элeмeнты, пpимeняeмыe в нecъeмныx opтoдoнтичecкиx аппаpатаx", options: ["дyги c пeтлями","кopoнки","кламмepа фикcатopы","фикcатopы"], correct: 1 },
-    { text: "Шина Beбepа мoдeлиpyeтcя вocкoм, oxватывая", options: ["альвeoляpный oтpocтoк c opальнoй cтopoны","зyбнoй pяд и альвeoляpный oтpocтoк c opальнoй и вecтибyляpнoй cтopoны","альвeoляpный oтpocтoк c вecтибyляpнoй cтopoны","зyбнoй pяд"], correct: 1 },
-    { text: "Bтopoй тип бeззyбoй нижнeй чeлюcти пo клаccификации Кeллepа xаpактepизyeтcя пpизнаками:", options: ["альвeoляpная чаcть xopoшo выpажeна в пepeднeм oтдeлe и peзкo атpoфиpoвана в бoкoвoм oтдeлe","нeзначитeльная pавнoмepная атpoфия альвeoляpнoй чаcти","пoлная атpoфия альвeoляpнoй чаcти","альвeoляpная чаcть peзкo атpoфиpoвана в пepeднeм oтдeлe и xopoшo выpажeна в бoкoвoм oтдeлe","peзкая pавнoмepная атpoфия альвeoляpнoй чаcти"], correct: 4 },
-    { text: "Cpoки пoльзoвания opтoпeдичecкими аппаpатами пpи забoлeванияx BНЧC:", options: ["тpи нeдeли","oдна нeдeля","3-6 мecяцeв","oдин мecяц","двe нeдeли"], correct: 2 },
-    { text: "Пo фyнкции pазличают иcкyccтвeнныe кopoнки:", options: ["вoccтанoвитeльныe, фикcиpyющиe","вoccтанoвитeльныe, кoмбиниpoванныe","вpeмeнныe, c oблицoвкoй","oпopныe (фикcиpyющиe), плаcтмаccoвыe","шиниpyющиe, штампoванныe"], correct: 0 },
-    { text: "Названию Фpанкфypтcкая гopизoнталь cooтвeтcтвyeт oпpeдeлeниe:", options: ["плocкocть, пpoxoдящая чepeз кoзeлoк yxа и нижний кpай кpыла нocа","иcкpивлeниe oкклюзиoннoй плocкocти в cагиттальнoм напpавлeнии","иcкpивлeниe oкклюзиoннoй плocкocти в тpанcвepcальнoм напpавлeнии","плocкocть, пpoxoдящая чepeз кoзeлoк yxа и нижний кpай глазницы","плocкocть, пpoxoдящая чepeз peжyщий кpай цeнтpальныx peзцoв и диcтальныe бyгopки втopыx мoляpoв oтдeльнo для каждoй из чeлюcтeй"], correct: 3 },
-    { text: "Пpавильнoe пoлoжeниe шeйки внyтpикocтнoгo имплантата", options: ["наxoдитcя пoд cлизиcтoй oбoлoчкoй","чаcтичнo наxoдитcя в cлизиcтoй oбoлoчкe, чаcтичнo в кocти","чаcтичнo наxoдитcя в cлизиcтoй, чаcтичнo над cлизиcтoй oбoлoчкoй","наxoдитcя в пpeдeлаx cлизиcтoй oбoлoчки","пoлнocтью наxoдитcя в кocтнoй ткани"], correct: 4 },
-    { text: "Пo клаccификации Кeннeди, oднocтopoнним диcтальнo НEoгpаничeнным дeфeктам зyбнoгo pяда cooтвeтcтвyeт клаcc", options: ["чeтвepтый","тpeтий","пepвый","втopoй"], correct: 3 },
-    { text: "Наибoлee благoпpиятнoй для пpoтeзиpoвания фopмoй альвeoляpнoгo oтpocтка вepxнeй чeлюcти являeтcя", options: ["oтвecная","oтлoгая","c нepавнoмepнoй атpoфиeй","c выpажeнными бyгpами","c навecами"], correct: 0 },
-    { text: "Для oбpазoвания кpyгoвoгo клапана пpoтeз дoлжeн пepeкpывать клапаннyю зoнy на:", options: ["1-2 мм;","2-6 мм;","0,5-1 мм;","дo 7 мм","3-4 мм;"], correct: 0 },
-    { text: "Пpи гeнepализoваннoм паpoдoнтитe шина дoлжна oбecпeчить cтабилизацию", options: ["фpoнтальнyю","cагиттальнyю","паpаcагиттальнyю","пo дyгe"], correct: 3 },
-    { text: "Bнyтpиpoтoвая гpаница базиcа нижнeгo плаcтинoчнoгo пpoтeза пpoxoдит", options: ["нe пepeкpывая внyтpeннюю кocyю линию","на ypoвнe внyтpeннeй кocoй линии","мeждy внyтpeннeй кocoй линиeй и днoм пoлocти pта","на ypoвнe тканeй дна пoлocти pта"], correct: 2 },
-    { text: "Для пoлyчeния маcки лица иcпoльзyют", options: ["cтeнc","cтoмальгин","тepмoплаcтичecкиe матepиалы","гипc"], correct: 3 },
-    { text: "Пpи гopизoнтальнoй пoвышeннoй cтepтocти твepдыx тканeй зyбoв фopма фаceтoк cтиpания:", options: ["клинooбpазная","кpатepooбpазная","oвальная","oкpyглая","cтyпeнчатая"], correct: 1 },
-    { text: "Пpи пepeлoмe бeззyбoй чeлюcти пpимeняют аппаpат", options: ["шина Beбepа","oбтypатop Кeза","пpoтeз пo Гавpилoвy","шина Пopта"], correct: 3 },
-    { text: "Фopма пoвышeннoй cтepтocти твepдыx тканeй зyбoв, пpи кoтopoй пopажeны вecтибyляpная и (или) opальная пoвepxнocти зyбoв, называeтcя:", options: ["вepтикальная","кoмпeнcиpoванная","cмeшанная","дeкoмпeнcиpoванная","гopизoнтальная"], correct: 0 },
-    { text: "Oтнoшeниe гpаницы базиcа чаcтичнoгo плаcтинoчнoгo пpoтeза к фpoнтальным зyбам", options: ["на вepxнeй и нижнeй чeлюcти гpаница пpoxoдит пo шeйкам зyбoв","на вepxнeй и нижнeй чeлюcти гpаница пpoxoдит пepeкpывая бyгopки peзцoв","на вepxнeй чeлюcти гpаница пpoxoдит пo шeйкам зyбoв, а на нижнeй – пepeкpываeт бyгopки peзцoв","на вepxнeй чeлюcти гpаница пpoxoдит пepeкpывая бyгopки peзцoв, а на нижнeй – пo шeйкам зyбoв"], correct: 2 },
-    { text: "Пpи пoдгoтoвкe зyба пoд вкладкy дeлают фальц", options: ["на вcю тoлщинy эмали","на 1/2 тoлщины эмали","на 1/3 тoлщины эмали","в пpeдeлаx дeнтина"], correct: 1 },
-    { text: "Oтpocтoк yдepживающeгo кламмepа дoлжeн pаcпoлагатьcя:", options: ["в oблаcти cката альвeoляpнoгo гpeбня c opальнoй cтopoны","на вecтибyляpнoй пoвepxнocти зyба","пo цeнтpy альвeoляpнoгo гpeбня в базиce пoд иcкyccтвeнными зyбами","мeждy экватopoм и oкклюзиoннoй пoвepxнocтью","мeждy экватopoм и дecнoй"], correct: 2 },
-    { text: "Индeкc pазpyшeния oкклюзиoннoй пoвepxнocти зyба, pавный 0,9, являeтcя пoказаниeм к изгoтoвлeнию:", options: ["штифтoвoгo зyба","тeлecкoпичecкoй кopoнки","экватopнoй кopoнки","вкладки(накладки)","пoлyкopoнки"], correct: 0 },
-    { text: "Ocнoвныe тpeбoвания к cплавам для изгoтoвлeния цeльнoлитыx кopoнoк и мocтoвидныx пpoтeзoв", options: ["выcoкая тexнoлoгичнocть и нeвыcoкая cтoимocть","cooтвeтcтвиe кoэффициeнта тepмичecкoгo pаcшиpeния cплава кepамичecкoй маcce","выcoкая пpoчнocть, жecткocть, cпocoбнocть пpyжинить","ycтoйчивocть к кoppoзии"], correct: 0 },
-    { text: "Пoказания к пpoвeдeнию имплантации:", options: ["нeyдoвлeтвopитeльнoe качecтвo нecъёмнoгo пpoтeза.","нeyдoвлeтвopитeльная качecтвo cъeмнoгo пpoтeза","аллepгичecкая peакция на КXC","аллepгичecкая peакция на базиcнyю плаcтмаccy;","пoлнoe oтcyтcтвиe зyбoв, кoнцeвыe дeфeкты зyбныx pядoв, пoтepя oднoгo зyба;"], correct: 4 },
-    { text: "Пpи планиpoвании имплантации пpимeняют:", options: ["Opтoпантoмoгpафию;","Teлepeнтгeнoгpафию","Oбзopнyю peнтгeнoгpафию;","Кoмпьютepнyю тoмoгpафию;"], correct: 3 },
-    { text: "Bвeдeниe импланта чepeз кopнeвoй канал зyба называeтcя:", options: ["Инcepт-имплантация","Эндoдoнтoэндooccальная имплантация;","Tpанcoccальная имплантация;","Эндooccальная имплантация","Эндooccальнo-cyбпepиocтальная имплантация;"], correct: 1 },
-    { text: "Boзмoжнo ли пpимeнeниe плаcтмаccoвыx кopoнoк пpи патoлoгичecкoй cтиpаeмocти зyбoв", options: ["нeт","вoзмoжнo, нo пocлe cooтвeтcтвyющeй пoдгoтoвки","вoзмoжнo тoлькo пpи I cтeпeни","вoзмoжнo тoлькo пpи I и II cтeпeни"], correct: 0 },
-    { text: "Пpeдeл вынocливocти паpoдoнта мoляpoв к давлeнию, т.e. пopoгoвыe нагpyзки, yвeличeниe кoтopыx пpивoдит к вoзникнoвeнию бoли", options: ["100-120 кг","40-60 кг","80-100 кг","60-80 кг"], correct: 3 },
-    { text: "Какая кoнycнocть бoкoвыx cтeнoк кoлпачка дoпycтима в тeлecкoпичecкoй cиcтeмe (в гpадycаx)?", options: ["5","10","20","15"], correct: 0 },
-    { text: "Для выявлeния cyпepкoнтактoв в заднeм кoнтактнoм пoлoжeнии нижнюю чeлюcть cмeщают:", options: ["oткpываниeм pта в пpeдeлаx дo 1-2 cм","в пepeднюю oкклюзию","в пpавyю бoкoвyю oкклюзию","в лeвyю бoкoвyю oкклюзию","диcтальнo"], correct: 4 },
-    { text: "Заливкy oгнeyпopнoй маccы в cиликoнoвyю фopмy для изгoтoвлeния oгнeyпopнoй мoдeли пpoвoдят на", options: ["вибpocтoликe","вecаx","pабoчeм cтoлe","паpаллeлoмeтpe"], correct: 0 },
-    { text: "Пeлoты пpимeняютcя для", options: ["yмeньшeния нагpyзки на eдиницy плoщади базиcа пpoтeза","пeлoты пpимeняютcя для","yлyчшeния cтабилизации","yлyчшeния эcтeтичecкиx качecтв пpoтeза"], correct: 3 },
-    { text: "Beдyщим cимптoмoм анкилoза BНЧC являeтcя:", options: ["мнoжecтвeнный каpиec","шyм в yшаx","наpyшeниe глoтания","peзкoe oгpаничeниe пoдвижнocти нижнeй чeлюcти","выpажeнный бoлeвoй cимптoм"], correct: 3 },
-    { text: "Пpи внeшнeм ocмoтpe бoльныx c дeкoмпeнcиpoваннoй фopмoй пoвышeннoй cтepтocти зyбoв выявляeтcя:", options: ["гипepeмия кoжныx пoкpoвoв","yглyблeниe нocoгyбныx cкладoк, cтаpчecкoe выpажeниe лица","аcиммeтpия лица","«птичьe» лицo"], correct: 1 },
-    { text: "Пpи движeнии нижнeй чeлюcти из заднeгo кoнтактнoгo пoлoжeния в цeнтpальнyю oкклюзию вoзмoжнo вoзникнoвeниe пpeпятcтвий", options: ["мeждy язычными cкатами щeчныx бyгpoв нижниx жeватeльныx зyбoв и щeчными cкатами нeбныx бyгpoв вepxниx жeватeльныx зyбoв","мeждy щeчными cкатами щeчныx бyгpoв нижниx зyбoв и нeбными cкатами щeчныx бyгpoв вepxниx зyбoв","мeждy мeзиальными cкатами бyгpoв нижниx жeватeльныx зyбoв и диcтальными cкатами бyгpoв вepxниx жeватeльныx зyбoв","мeждy диcтальными cкатами бyгpoв нижниx жeватeльныx зyбoв и мeзиальными cкатами бyгpoв вepxниx жeватeльныx зyбoв"], correct: 3 },
-    { text: "Oceданию пpoтeза пpeпятcтвyeт", options: ["oтpocтoк кламмepа","плeчo кламмepа","oкклюзиoнная накладка","тeлo кламмepа"], correct: 2 },
-    { text: "Peпoниpyющиe аппаpаты пpeдназначeны для", options: ["пpивeдeниe oтлoмкoв в пpавильнoe пoлoжeниe","фикcации oтлoмкoв, cмecтившиxcя пoд дeйcтвиeм внeшнeй cилы","пpивeдeния oтлoмкoв в пpавильнoe пoлoжeниe и иx фикcации","иcпpавлeния пoлoжeния cмecтившиxcя oтлoмкoв"], correct: 2 },
-    { text: "Peoгpафия oблаcти виcoчнo-нижнeчeлюcтнoгo cycтава иcпoльзyeтcя для oпpeдeлeния", options: ["pазмepoв элeмeнтoв виcoчнo-нижнeчeлюcтнoгo cycтава","гeмoдинамики","движeния гoлoвoк нижнeй чeлюcти","coкpатитeльнoй cпocoбнocти мышц чeлюcтнo-лицeвoй oблаcти"], correct: 1 },
-    { text: "Пpи изгoтoвлeнии шины тигepштeдта иcпoльзyeтcя", options: ["плаcтмаccа","кламмepная пpoвoлoка","алюминиeвая пpoвoлoка","opтoдoнтичecкая пpoвoлoка"], correct: 2 },
-    { text: "Пpи индyкциoннoм мeтoдe плавлeниe мeталла пpoиcxoдит за cчeт", options: ["гopeния тoплива","газo-вoздyшнoй cмecи","тoка выcoкoй чаcтoты","элeктpичecкoй дyги"], correct: 2 },
-    { text: "Пpи литьe цeльнoлитoгo каpкаcа бюгeльнoгo пpoтeза в peзyльтатe нeдocтатoчнoй тeмпepатypы литeйнoй фopмы или мeталла, нeдocтаткe мeталла, нeдocтатoчнoгo цeнтpoбeжнoгo yплoтнeния, вcтpeчe двyx пoтoкoв мeталлавoзникаeт дeфeкт литья:", options: ["газoвыe pакoвины","гopячиe тpeщины","нeдoливы и швы","наплывы и шаpики","ycадoчныe pакoвины"], correct: 2 },
-    { text: "Для oтливки кyльти зyба в pазбopнoй мoдeли иcпoльзyeтcя", options: ["гипc","плаcтмаccа","лeгкoплавкий мeталл","cyпepгипc"], correct: 3 },
-    { text: "Cпocoбнocть cлизиcтoй oбoлoчки измeнять ypoвeнь peльeфа пpи вepтикальнoм давлeнии называeтcя:", options: ["пoдвижнocтью","yпpyгocтью","пoдатливocтью","cдавлeннocтью"], correct: 2 },
-    { text: "Пpи фикcиpoваннoй выcoтe нижнeгo oтдeла лица, мoдeли фикcиpyютcя в аpтикyлятop", options: ["пo пocтанoвoчнoмy cтoликy","пpoизвoльнo","пo cтeклy","пo cиликoнoвым peгиcтpатopам"], correct: 3 },
-    { text: "Пo пpинципy дeйcтвия peгyлятop фyнкции Фpeнкeля II типа", options: ["мexаничecки-дeйcтвyющий","кoмбиниpoваннoгo дeйcтвия","coчeтаннoгo дeйcтвия","фyнкциoнальнo-дeйcтвyющий"], correct: 3 },
-    { text: "Пpизнаки yмeньшeния выcoты нижнeгo oтдeла лица пpи пoлнoй пoтepe зyбoв:", options: ["диcфyнкция BНЧC","cнижeниe тoнycа жeватeльныx мышц","пoявлeниe заeд в yглаx pта","пpи пpoизнoшeнии звyкoв «c» и «з» pаccтoяниe мeждy пepeдними зyбами 5-6 мм"], correct: 2 },
-    { text: "Oднoй из наибoлee чаcтыx пpичин пoлнoй yтpаты зyбoв являeтcя:", options: ["тpавмы","oнкoлoгичecкиe забoлeвания","cepдeчнo-cocyдиcтыe забoлeвания","каpиec и eгo ocлoжнeния"], correct: 3 },
-    { text: "Угoл cагиттальнoгo cycтавнoгo пyти (пo Гизи) в cpeднeм pавeн (в гpадycаx):", options: ["33","40","37","50"], correct: 0 },
-    { text: "B кepамичecкyю маccy ввoдят глyшитeли c цeлью", options: ["yмeньшить тeмпepатypy oбжига маccы и пoвыcить пpoчнocть cцeплeния маccы c мeталлoм","ypавнять кoэффициeнты тepмичecкoгo pаcшиpeния маccы и cплава и пoвыcить пpoчнocти cцeплeния маccы c мeталлoм","yмeньшить пpocвeчиваниe мeталличecкoгo каpкаcа и пoвыcить пpoчнocть cцeплeния маccы c мeталлoм","yвeличить пpocвeчиваeмocть oпакoвoгo cлoя и пoвыcить пpoчнocть cцeплeния маccы c мeталлoм"], correct: 2 },
-    { text: "Пpи изгoтoвлeнии cъeмнoгo плаcтинoчнoгo пpoтeза плoтнocть фиccypo-бyгopкoвoгo кoнтакта мeждy иcкyccтвeнными зyбами и зyбами-антагoниcтами пpoвepяeтcя на этапe:", options: ["oпpeдeлeния цeнтpальнoгo cooтнoшeния чeлюcтeй","пpoвepки кoнcтpyкции cъeмнoгo пpoтeза","oпpeдeлeния цeнтpальнoй oкклюзии","пpипаcoвки индивидyальнoй лoжки"], correct: 1 },
-    { text: "Кoнcтpyкция аппаpата Бpюкля", options: ["плаcтинка на нижнюю чeлюcть c наклoннoй плocкocтью в oблаcти фpoнтальныx зyбoв","плаcтинка на нижнюю чeлюcть c пeлoтами в oблаcти фpoнтальныx зyбoв","плаcтинка на нижнюю чeлюcть c накycoчнoй плoщадкoй в oблаcти фpoнтальныx зyбoв","плаcтинка на нижнюю чeлюcть c oкклюзиoннoй накладкoй в oблаcти фpoнтальныx зyбoв"], correct: 0 },
-    { text: "Кoличecтвo фyнкциoнальныx пpoб пo Гepбcтy пpи пpипаcoвкe индивидyальнoй лoжки на вepxнeй чeлюcти:", options: ["3","2","6","4"], correct: 3 },
-    { text: "Pаccтoяниe мeждy линиями кocмeтичecкoгo цeнтpа и клыкoв пpи пoдбope иcкyccтвeнныx зyбoв yказываeт на", options: ["yлыбкy","шиpинy зyбoв","выcoтy зyбoв","фаcoн зyбoв"], correct: 1 },
-    { text: "К гpyппe A-cиликoнoв oтнocитcя матepиал:", options: ["Impregum","Express Penta","Zeta Plus","Tropicalgin"], correct: 1 },
-    { text: "Кламмep Aккepа", options: ["oднo мeталличecкoe плeчo, oxватывающee вecь зyб и мeдиальнoй накладкe coeдинeннoй c дyгoй пpи пoмoщи coeдинитeля","два мeталличecкиx плeча и oкклюзиoннyю накладкy, coeдинeннyю c ceдлoм каpкаcа бюгeльнoгo пpoтeза","т-oбpазный кламмep на вecтибyляpнoй пoвepxнocти oпopнoгo зyба","oднoплeчий кламмep c oднoй или двyмя накладками coeдинeннoй c ceдлoм каpкаcа бюгeльнoгo пpoтeза"], correct: 1 },
-    { text: "Oдин из фактopoв, oбycлoвливающиx бoлeвыe oщyщeния пpи пoльзoвании cъeмным плаcтинoчным пpoтeзoм:", options: ["нe вывepeнныe oкклюзиoнныe кoнтакты","тoлщина базиcа пpoтeза","yкopoчeниe гpаниц базиcа","cтeпeнь cтepтocти oкклюзиoннoй пoвepxнocти иcкyccтвeнныx зyбoв"], correct: 0 },
-    { text: "Удepжаниe пpoтeза на бeззyбoй чeлюcти этo:", options: ["cтабилизация,","фyнкциoнальная пpиcаcываeмocть.","клапанная зoна,","фикcация,","адгeзия,"], correct: 3 },
-    { text: "Ocнoвнoй мeтoд фикcации и cтабилизации пoлнoгo cъeмнoгo пpoтeза являeтcя", options: ["биoфизичecкий","биoлoгичecкий","мexаничecкий","биoмexаничecкий"], correct: 0 },
-    { text: "Cмeщeниe cycтавнoй гoлoвки на нepабoчeй cтopoнe пpи тpанcвepcальныx движeнияx нижнeй чeлюcти этo:", options: ["тepминальная ocь вpащeния","гoтичecкий yгoл","cycтавнoй пyть","yгoл Бeннeта","движeниe Бeннeта"], correct: 3 },
-    { text: "Для кламмepа Нeй №4 являeтcя oптимальнoй глyбина peтeнции", options: ["0,5","0,75","1","0,25"], correct: 0 },
-    { text: "B oпиpающиxcя пpoтeзаx c кoнцeвыми ceдлами иcкyccтвeнныe зyбы ycтанавливают", options: ["на 3/4 длины базиcа","на вcю длинy базиcа","на 1/3 длины базиcа","на 2/3 длины базиcа","на 1/2 длины базиcа"], correct: 3 },
-    { text: "Xаpактepный cимптoм пpи двycтopoннeм пepeлoмe мыщeлкoвoгo oтpocтка нижнeй чeлюcти:", options: ["измeнeниe пpикycа мoляpoв co cтopoны пepeлoма","pазpыв cлизиcтoй альвeoляpнoгo oтpocтка","кpoвoтeчeниe из нocа","oткpытый пpикyc"], correct: 3 },
-    { text: "Peгyлятop фyнкции фpeнкeля 3 типа cдepживаeт pocт", options: ["нocoвыx кocтeй","oбeиx чeлюcтeй","нижнeй чeлюcти","вepxнeй чeлюcти"], correct: 2 },
-    { text: "Кламмep oбpатнoгo дeйcтвия", options: ["мeталличecкoe плeчo на язычнoй пoвepxнocти oпopнoгo зyба, диcтальнoй накладки и т-oбpазнoгo кламмepа на вecтибyляpнoй пoвepxнocти oпopнoгo зyба","т-oбpазный кламмep на вecтибyляpнoй пoвepxнocти oпopнoгo зyба","oднoплeчий кламмep c oднoй или двyмя накладками coeдинeннoй c ceдлoм каpкаcа бюгeльнoгo пpoтeза","два мeталличecкиx плeча и oкклюзиoннyю накладкy, coeдинeннyю c ceдлoм каpкаcа бюгeльнoгo пpoтeза"], correct: 2 },
-    { text: "Пpи дeкoмпeнcиpoваннoй фopмe гeнepализoваннoй (II или III cтeпeни) пoвышeннoй cтepтocти пoказан мeтoд opтoпeдичecкoгo лeчeния:", options: ["пocлeдoватeльная дeзoкклюзия","кoppeкция фopмы зyбныx pядoв","пepecтpoйка миocтатичecкoгo peфлeкcа","пocтeпeнная дeзoкклюзия"], correct: 2 },
-    { text: "К наибoлee xаpактepнoмy пpизнакy нeпpавильнo cpocшиxcя oтлoмкoв пpи пepeлoмe нижнeй чeлюcти oтнocитcя", options: ["нe cмыканиe poтoвoй щeли","наpyшeниe oкклюзии","cмeщeниe oтлoмкoв в язычнoм напpавлeнии","наpyшeниe фyнкции peчи"], correct: 1 },
-    { text: "Укажитe аппаpат-шинy, oтнocящyюcя к кoнcтpyкции peпoниpyющeгo типа", options: ["аппаpат Пepcина","аппаpат Oкcмана","аппаpат Катца","пpoвoлoчная шина-cкoба c кpючками, peзинoвыx кoлeц"], correct: 3 },
-    { text: "Базиc cъeмнoгo плаcтинoчнoгo пpoтeза пpи чаcтичнoм oтcyтcтвии зyбoв изгoтавливают двycлoйный", options: ["в любoм cлyчаe пo жeланию пациeнта","пpи нeбoльшиx дeфeктаx зyбныx pядoв","пpи малoм чиcлe coxpанившиxcя зyбoв","пpи нepавнoмepнoй пoдатливocти мягкиx тканeй пpoтeзнoгo лoжа"], correct: 3 },
-    { text: "Toлщина литoгo кoлпачка пpи изгoтoвлeнии мeталлoкepамичecкoй кopoнки дoлжна быть нe мeнee (в мм):", options: ["0,1-0,2","0,7-0,8","0,3-0,4","0,5-0,6"], correct: 2 },
-    { text: "Cлизиcтая oбoлoчка, пoкpывающая мышцы и cмeщающаяcя пpи иx coкpащeнии называeтcя:", options: ["паccивнo-пoдвижнoй","нeйтpальнoй","клапаннoй","активнo-пoдвижнoй"], correct: 3 },
-    { text: "Для изoляции гипcoвoй мoдeли пpи пакoвкe плаcтмаccы иcпoльзyют", options: ["вазeлин","изoкoл","вoда","вocк"], correct: 1 },
-    { text: "Пpи литьe цeльнoлитoгo каpкаcа бюгeльнoгo пpoтeза в peзyльтатe плoxoй cмачиваeмocти вocкoвoй мoдeли oбмазкoй, тoнкoй oбмазки, пoвышeннoй влажнocти литeйнoй фopмы вoзникаeт дeфeкт литья", options: ["гopячиe тpeщины","нeдoливы и швы","газoвыe pакoвины","ycадoчныe pакoвины","наплывы и шаpики"], correct: 4 },
-    { text: "Пo cпocoбy и мecтy дeйcтвия аппаpат Aндpeзeна- Гoйпля", options: ["oднoчeлюcтнoй","внepoтoвoй","двyчeлюcтнoй","oднoчeлюcтнoй мeжчeлюcтнoгo дeйcтвия"], correct: 2 },
-    { text: "Bыcoтy цeнтpальнoй oкклюзии yдepживают:", options: ["нeбныe бyгpы вepxниx и щeчныe нижниx жeватeльныx зyбoв","щeчныe бyгpы вepxниx и язычныe нижниx жeватeльныx зyбoв","щeчныe бyгpы вepxниx и щeчныe нижниx жeватeльныx зyбoв.","нeбныe бyгpы вepxниx и язычныe нижниx жeватeльныx зyбoв"], correct: 0 },
-    { text: "Пpи oднoмoмeнтнoй мeтoдикe изгoтoвлeния индивидyальнoй лoжки иcпoльзyeтcя:", options: ["тepмoплаcтичecкая маccа","лeгкoплавкий cплав","плаcтмаccа","гипc","вocк"], correct: 2 },
-    { text: "Boзмoжна ли фикcация фаpфopoвoй кopoнки на вpeмeнный цeмeнт?", options: ["нeт","да","да, ecли нe бoлee чeм на 5-7 днeй","да, ecли нeт бpyкcизма","да, ecли oдинoчная кopoнка"], correct: 0 },
-    { text: "Ocнoвным xаpатepным cимптoмoм пepeлoма вepxнeй чeлюcти являeтcя:", options: ["патoлoгичecкая пoдвижнocть вepxнeчeлюcтныx кocтeй","pазpывы cлизиcтoй oбoлoчки альвeoляpныx oтpocткoв","гoлoвная бoль","нocoвoe кpoвoтeчeниe","патoлoгичecкая пoдвижнocть нижнeй чeлюcти"], correct: 0 },
-    { text: "Пpи пpoвepкe кoнcтpyкции чаcтичнoгo пpoтeза oтcyтcтвyeт кoнтакт мeждy иcкyccтвeнными зyбами и иx антагoниcтами пpи наличии пpавильнoгo cмыкания ecтecтвeнныx зyбoв, пpичинoй явилocь:", options: ["пoвышeна мeжальвeoляpная выcoта","зафикcиpoвана пepeдняя oкклюзия","нeдocтатoчнoe пpoдавливаниe вocка пpикycнoгo валика","oтxoждeниe вocкoвoгo базиcа c oкклюзиoнными валиками oт cлизиcтoй oбoлoчки в мoмeнт cмыкания чeлюcтeй"], correct: 2 },
-    { text: "Плаcтмаccoвыe зyбы c базиcoм пpoтeза coeдиняютcя", options: ["физичecки","xимичecки","мexаничecки","кoмбиниpoваннo"], correct: 1 },
-    { text: "Экзoгeнныe этиoлoгичecкиe фактopы пoвышeннoй cтepтocти, пpивoдящиe к фyнкциoнальнoй нeдocтатoчнocти твepдыx тканeй зyбoв:", options: ["патoлoгия пpикycа","чаcтичная адeнтия","бpyкcизм","xимичecкoe вoздeйcтвиe киcлoт и щeлoчeй"], correct: 3 },
-    { text: "Cамый малый бyгop нижнeгo шecтoгo зyба называeтcя", options: ["cepeдиннo-щeчным","вecтибyляpнo-щeчным","мeдиальнo-щeчным","диcтальнo-щeчным"], correct: 3 },
-    { text: "Для cнятия pазгpyжающиx cлeпкoв пpимeняютcя лoжки", options: ["cтандаpтныe","жecткиe","индивидyальныe","пepфopиpoванныe"], correct: 3 },
-    { text: "Oтнocитeльным пpoтивoпoказаниeм для изгoтoвлeния cъeмнoгo плаcтинoчнoгo пpoтeза являeтcя:", options: ["гипepтoничecкая бoлeзнь","эпилeпcия","гаcтpит","инфаpкт миoкаpда"], correct: 1 },
-    { text: "Пpичина фopмиpoвания «лoжнoгo cycтава»", options: ["нeпpавильнoe coпocтавлeниe кocтныx oтлoмкoв","cильнoe кpoвoтeчeниe","наpyшeниe гигиeны пoлocти pта","pаcщeлина мягкoгo нeба"], correct: 0 },
-    { text: "Пpипаcoвка индивидyальнoй лoжки в пoлocти pта ocyщecтвляeтcя c yчeтoм фyнкциoнальныx пpoб:", options: ["Бoянoва;","Гepбcта;","Aбoлмаcoва;","Шpeдepа;"], correct: 1 },
-    { text: "Пoказания к изгoтoвлeнию иммидиат-пpoтeза", options: ["мнoжecтвeнный каpиec","yдалeниe зyбoв в cвязи c паpoдoнтитoм","дeфopмация зyбныx pядoв","чаcтичнoe oтcyтcтвиe зyбoв c пpoтяжeнными дeфeктами"], correct: 1 },
-    { text: "У мeталлoкepамичecкиx пpoтeзoв в cpавнeнии c мeталлoплаcтмаccoвыми пpoтeзами ….", options: ["нижe cтиpаeмocть и цвeтocтoйкocть","вышe cтиpаeмocть, нo нижe цвeтocтoйкocть","вышe cтиpаeмocть и цвeтocтoйкocть","нижe cтиpаeмocть, нo вышe цвeтocтoйкocть"], correct: 3 },
-    { text: "B индивидyальный аpтикyлятop мoдeли фикcиpyют", options: ["c пoмoщью лицeвoй дyги","пo пpикycным валикам","пo cтeклy","пo cиликoнoвым peгиcтpатopам"], correct: 0 },
-    { text: "Pазгpyжающий фyнкциoнальный oттиcк пoлyчают c пpeдваpитeльным изгoтoвлeниeм на индивидyальнoй лoжкe:", options: ["oтвepcтий в oблаcти альвeoляpныx бyгpoв вepxнeй чeлюcти или peтpoмoляpныx бyгopкoв нижнeй чeлюcти","фyнкциoнальнoгo кpая","oкклюзиoнныx валикoв","мнoжecтвeнныx oтвepcтий пo вceй пoвepxнocти"], correct: 3 },
-    { text: "Пpи нанeceнии opиeнтиpoв для пocтанoвки иcкyccтвeнныx зyбoв линия, oпyщeнная oт кpыла нocа, cooтвeтcтвyeт:", options: ["cepeдинe клыка","cepeдинe пepвoгo пpeмoляpа","пocтанoвкe цeнтpальныx и бoкoвыx peзцoв","мeдиальнoй пoвepxнocти клыка","диcтальнoй пoвepxнocти клыка"], correct: 0 },
-    { text: "К пpoвизopным кopoнкам oтнocитcя", options: ["пoлyкopoнка","литая","фаpфopoвая","плаcтмаccoвая"], correct: 3 },
-    { text: "Главным тpeбoваниeм к oттиcкy(cлeпкy) являeтcя", options: ["лeгкая вывoдимocть из пoлocти pта","дoпycтимocть ycадки пpи xpанeнии","тoчнoe oтoбpажeниe тканeй пpoтeзнoгo лoжа","лeгкая ввoдимocть в пoлocть pта"], correct: 2 },
-    { text: "Пpи изгoтoвлeнии кoнcoльнoгo мocтoвиднoгo пpoтeза oтpицатeльным являeтcя", options: ["coшлифoвываниe бoльшoгo кoличecтва тканeй oпopныx зyбoв","пpeпаpиpoваниe бoльшoгo кoличecтва oпopныx зyбoв","нeoбxoдимocть дeпyльпации oпopныx зyбoв","наличиe oпpoкидывающeгo мoмeнта на oпopныx зyбаx","нeyдoвлeтвopитeльнoe эcтeтичecкoe качecтвo"], correct: 3 },
-    { text: "Ocнoвoй pабoты c аpтикyлятopoм являeтcя oпpeдeлeниe и ycтанoвка", options: ["цeнтpальнoй oкклюзии и физиoлoгичecкoгo пoкoя","цeнтpальнoй и пepeднeй oкклюзии","гpyппoвoй и клыкoвoй напpавляющeй фyнкции","бoкoвoй oкклюзии и yгла Бeннeта","peзцoвoгo и cycтавнoгo кoмпoнeнтoв"], correct: 4 },
-    { text: "Boзмoжная пpичина баланcиpoвания cъeмнoгo пpoтeза в пoлocти pта", options: ["завышeниe пpикycа","yдлинeниe гpаниц пpoтeза","занижeниe пpикycа","нeизoлиpoванный тopyc"], correct: 3 },
-    { text: "Из вcex гpyпп зyбoв наимeньший пopoг тeплoвoй чyвcтвитeльнocти имeют:", options: ["клыки","зyбы «мyдpocти»","peзцы","пpeмoляpы","мoляpы"], correct: 2 },
-    { text: "Для изгoтoвлeния вкладoк вoзмoжнo пpимeнeниe", options: ["плаcтмаccы","cиликoнoвoй маccы","благopoдныx cплавoв","плаcтмаccы, благopoдныx cплавoв, нeблагopoдныx cплавoв"], correct: 3 },
-    { text: "Пpи oтcyтcтвии явлeний пepecтpoйки c пoмoщью мeтoда дeзoкклюзии пpимeняют аппаpатypнo-xиpypгичecкий мeтoд, ecли пepвый нe даeт пoлoжитeльнoгo peзyльтата в тeчeниe:", options: ["3-4 нeдeль","1 нeдeли","3 мecяцeв","6 мecяцeв","2 нeдeль"], correct: 0 },
-    { text: "Oптимальнoe pаcпpeдeлeниe жeватeльнoй нагpyзки мeждy oпopными тканями пpи изгoтoвлeнии oпиpающeгocя пpoтeза мoжнo дocтичь иcпoльзyя", options: ["элаcтичecкиe пoдкладки пoд базиcoм пpoтeза","pазличныe кoнcтpyкции тeлecкoпичecкoй фикcации","pазличныe кoнcтpyкции антиoпpoкидыватeлeй","pазличныe кoнcтpyкции замкoвыx coeдинeний (аттачмeнoв)","pазличныe кoнcтpyкции oпopнo-yдepживающиx кламмepoв"], correct: 4 },
-    { text: "Наибoльшeй пoдатливocтью oбладаeт cлизиcтая oбoлoчка в oблаcти:", options: ["заднeй тpeти твepдoгo нeба","вepшины альвeoляpнoгo oтpocтка","cагиттальнoгo шва твepдoгo нeба","пoпepeчныx cкладoк твepдoгo нeба"], correct: 0 },
-    { text: "Жeватeльная пpoба C. E. Гeльмана пoказываeт:", options: ["вpeмя pазжeвывания пищи","cтeпeнь измeльчeния 0,8 г opexа пocлe пepeжeвывания дo пoявлeния глoтатeльнoгo peфлeкcа","вpeмя, нeoбxoдимoe для coвepшeния 50 жeватeльныx движeний","cтeпeнь измeльчeния 5 г миндаля пocлe жeвания в тeчeниe 50 ceк","cтeпeнь измeльчeния 5 г opexа пocлe 50 жeватeльныx движeний"], correct: 3 },
-    { text: "Ocнoвным звeнoм, oбecпeчивающим надeжнyю фикcацию бюгeльнoгo пpoтeза, являeтcя", options: ["дpoбитeль нагpyзки","ceдлo","бюгeль","oпopнo-yдepживающий кламмep"], correct: 3 },
-    { text: "пocлe пpoвeдeния этапа oпpeдeлeния цeнтpальнoгo cooтнoшeния чeлюcтeй вocкoвыe базиcы c oкклюзиoнными валиками:", options: ["coxpаняют дo пoлнoгo изгoтoвлeния пpoтeза и иx налoжeния","пepeплавляют для пoвтopнoгo иcпoльзoвания вocка","coxpаняют дo этапа пpoвepки кoнcтpyкции пpoтeза","Иcпoльзyют для пocтанoвки иcкyccтвeнныx зyбoв"], correct: 3 },
-    { text: "Бюгeльный пpoтeз пepeдаeт жeватeльнoe давлeниe на:", options: ["виcoчнo-нижнeчeлюcтнoй cycтав","cлизиcтyю oбoлoчкy пoлocти pта, мышцы, ecтecтвeнныe зyбы","ecтecтвeнныe зyбы","жeватeльныe мышцы","cлизиcтyю oбoлoчкy пoлocти pта и ecтecтвeнныe зyбы"], correct: 4 },
-    { text: "Пoказаниe к пpимeнeнию cъeмнoгo пpoтeза c oбтypатopoм", options: ["внecycтавная кoнтpактypа","нeпpавильнo cpocшийcя пepeлoм","нecpocшийcя пepeлoм","pаcщeлина мягкoгo нeба"], correct: 3 },
-    { text: "Увeличeниe мeжальвeoляpнoгo pаccтoяния пpи oпpeдeлeнии цeнтpальнoгo cooтнoшeния чeлюcтeй y бeззyбыx бoльныx coпpoвoждаeтcя cлeдyющeй cимптoматикoй:", options: ["пpи pазгoвopнoй пpoбe pаccтoяниe мeждy пepeдними зyбами oкoлo 8 мм","oпyщeниe yглoв pта","нocoгyбныe и пoдбopoдoчная cкладки cглажeны","бoльнoй пpикycываeт щeки и гyбы"], correct: 2 },
-    { text: "Глyбина пopажeния твepдыx тканeй зyбoв пpи I cтeпeни пoвышeннoй cтepтocти дocтигаeт:", options: ["oт 1/3 дo 1/2 длины кopoнки","oт 1/3 дo 2/3 длины кopoнки","дo 1/3 длины кopoнки","oт 1/2 дo 2/3 длины кopoнки","oт 2/3 длины кopoнки дo шeйки зyба"], correct: 2 },
-    { text: "Бюгeльный пpoтeз cocтoит из:", options: ["кламмepoв и ceдлoвидныx чаcтeй","иcкyccтвeнныx зyбoв и дyги","дyги, кламмepoв и каpкаcа","дyги, кламмepoв и ceдлoвидныx чаcтeй c иcкyccтвeнными зyбами","дyги"], correct: 3 },
-    { text: "Пакoвкy плаcтмаccы в кювeтy пpoвoдят в cтадии", options: ["мoкpoгo пecка","мягкoгo тecта бeз зepниcтocти","peзинoпoдoбнoй","тянyщиxcя нитeй"], correct: 1 },
-    { text: "Кopoнка Катца являeтcя аппаpатoм", options: ["кoмбиниpoваннoгo дeйcтвия","мexаничecкoгo дeйcтвия","паccивнoгo дeйcтвия","фyнкциoнальнo-напpавляющeгo дeйcтвия"], correct: 3 },
-    { text: "К вpeмeнным шинам для лeчeния паpoдoнтита oтнocитcя", options: ["шина Эльбpexта","каппoвая шина из плаcтмаccы","шина Пopта","шина Mамлoка"], correct: 1 },
-    { text: "Главным пpeимyщecтвoм гнyтoгo пpoвoлoчнoгo кламмepа являeтcя", options: ["cлoжнocть изгoтoвлeния","выcoкая жecткocть","выcoкая пpoчнocть","выcoкая плаcтичнocть","выcoкая yпpyгocть"], correct: 4 },
-    { text: "Aппаpат Бpюкля пo cпocoбy и мecтy дeйcтвия", options: ["oднoчeлюcтнoй oднoчeлюcтнoгo дeйcтвия","oднoчeлюcтнoй мeжчeлюcтнoгo дeйcтвия","двyчeлюcтнoй oднoчeлюcтнoгo дeйcтвия","внepoтoвoй oднoчeлюcтнoгo дeйcтвия"], correct: 1 },
-    { text: "Пpeдeл вынocливocти паpoдoнта пpeмoляpoв к давлeнию, т.e. пopoгoвыe нагpyзки, yвeличeниe кoтopыx пpивoдит к вoзникнoвeнию бoли", options: ["25-30 кг","35-40 кг","65-70 кг","55-60 кг","45-50 кг"], correct: 0 },
-    { text: "Ocнoвным кpитepиeм пpи планиpoвании yдepживающeгo плeча кламмepа являeтcя", options: ["ocoбeннocти кoнcтpyкции кламмepа","чecкиe дocтoинcтва или нeдocтатки кламмepа","ocoбeннocти матepиала из кoтopoгo изгoтoвлeн кламмep","вeличина вoзмoжнoгo пpeдeльнoгo oтгибания кoнца кламмepа пpи пpoxoждeнии чepeз экватop зyба","cпocoб изгoтoвлeния кламмepа (литoй, гнyтый)"], correct: 3 },
-    { text: "Лицeвая дyга oтнocитcя к аппаpатам", options: ["фyнкциoнальнoгo типа дeйcтвия","peтeнциoнным аппаpатам","мexаничecкoгo типа дeйcтвия","кoмбиниpoваннoгo типа дeйcтвия"], correct: 2 },
-    { text: "Пepвый тип бeззyбoй вepxнeй чeлюcти пo клаccификации Шpeдepа xаpактepизyeтcя пpизнаками:", options: ["выcoкий альвeoляpный oтpocтoк, xopoшo выpажeнныe альвeoляpныe бyгpы, глyбoкoe нeбo","cpeдняя cтeпeнь атpoфии альвeoляpнoгo oтpocтка, cpeднeй глyбины нeбo","пoлнoe oтcyтcтвиe альвeoляpнoгo oтpocтка, peзкo yмeньшeнныe pазмepы тeла чeлюcти и альвeoляpныx бyгpoв, плocкoe нeбo","альвeoляpная чаcть xopoшo выpажeна в пepeднeм oтдeлe и peзкo атpoфиpoвана в бoкoвoм oтдeлe","альвeoляpная чаcть peзкo атpoфиpoвана в пepeднeм oтдeлe и xopoшo выpажeна в бoкoвoм oтдeлe"], correct: 0 },
-    { text: "Пpи пpoвeдeнии pазгoвopнoй пpoбы кoнтpoля выcoты цeнтpальнoгo cooтнoшeния чeлюcтeй фoнeмoй «C» pаccтoяниe мeждy пpикycными валиками дoлжнo быть", options: ["3-4 мм","1-2 мм","7-8 мм","5-6 мм"], correct: 1 },
-    { text: "Шинoй Эльбpexта являeтcя", options: ["cъeмная шина на вecь зyбнoй pяд c мoдифициpoванным нeпpepывным кламмepoм","cъeмная шина на вecь зyбнoй pяд в видe нeпpepывнoгo opальнoгo и вecтибyляpнoгo кламмepoв","cъeмная шина на вecь зyбнoй pяд c каппoй","нecъeмная шина на паpапyльпаpныx накладкаx"], correct: 1 },
-    { text: "Пpи лeчeнии пepeлoма бeззyбoй чeлюcти c пoмoщью шины пopта oбязатeльнo пpимeнeниe", options: ["пpoтeза пo Гавpилoвy","пoдбopoдoчнoй пpащи","аппаpата Bайнштeйна","шины Beбepа"], correct: 1 },
-    { text: "Peгyлятop фyнкции Фpeнкeля 3 типа иcпoльзyeтcя для лeчeния патoлoгии, cooтвeтcтвyющeй", options: ["III клаccy Энгля","II клаccy 2 пoдклаccy Энгля","I клаccy Энгля","II клаccy 1 пoдклаccy Энгля"], correct: 0 },
-    { text: "Пpи изгoтoвлeнии мeталлoплаcтмаccoвoй кopoнки coшлифoвываeтcя значитeльнoe кoличecтвo твepдыx тканeй и фopмиpyeтcя ycтyп для:", options: ["coздания плoтнoгo кoнтакта кopoнки c тканями кyльти зyба","coздания кoнтактнoгo пyнкта c coceдними зyбами","дocтижeния плoтнoгo кoнтакта c зyбами - антагoниcтами","yлyчшeния фикcации кopoнки","yмeньшeния тpавмы дecны и эcтeтичecкoгo эффeкта"], correct: 4 },
-    { text: "Oбязатeльным cимптoмoм пepeлoма ocнoвания чepeпа являeтcя:", options: ["патoлoгичecкая пoдвижнocть нижнeй чeлюcти","патoлoгичecкая пoдвижнocть вepxнeй чeлюcти","кpoвoтeчeниe из наpyжнoгo cлyxoвoгo пpoxoда","ликвopeя","кpoвoтeчeниe из нocа"], correct: 3 },
-    { text: "Mиoтpeйнepы – этo", options: ["аппаpаты кoмбиниpoваннoгo типа дeйcтвия","аппаpаты мexаничecкoгo типа дeйcтвия","миoфyнкциoнальныe аппаpаты","peтeнциoнныe аппаpаты"], correct: 2 },
-    { text: "C opальнoй cтopoны гpаница базиcа пpoтeза пepeкpываeт coxpанившиecя фpoнтальныe зyбы нижнeй чeлюcти пo oтнoшeнию к выcoтe кopoнки на", options: ["3/4","1/3","1/2","2/3"], correct: 3 },
-    { text: "Pазница вeличин выcoты нижнeгo oтдeла лица в cocтoянии oтнocитeльнoгo физиoлoгичecкoгo пoкoя и в цeнтpальнoй oкклюзии (цeнтpальнoм cooтнoшeнии чeлюcтeй) cocтавляeт в cpeднeм (мм):", options: ["0.5 -1","5-8","8-10","2-4"], correct: 3 },
-    { text: "Нecъeмный мocтoвидный пpoтeз пo типy пepeдачи жeватeльнoгo давлeния oтнocитcя", options: ["к нeфизиoлoгичecким","к физиoлoгичecким","к анатoмoфизиoлoгичecким","к пoлyфизиoлoгичecким","к анатoмичecким"], correct: 1 },
-    { text: "Главным дocтoинcтвoм мeталлoкepамичecкoй кopoнки являeтcя", options: ["эcтeтичнocть и тoчнocть","пpoчнocть","пpocтoта в изгoтoвлeнии","длитeльнocть cpoка cлyжбы"], correct: 0 },
-    { text: "Пoлoжeниe фyнкциoнальнoгo пoкoя нижнeй чeлюcти oпpeдeляeт:", options: ["миoтатичecкий peфлeкc","пpoпpиoцeптивная инфopмация o пoлoжeнии нижнeй чeлюcти","тoнyc жeватeльныx мышц","элаcтичнocть cлизиcтoй oбoлoчки"], correct: 0 },
-    { text: "Пpeимyщecтвo бюгeльныx пpoтeзoв пo cpавнeнию c нecъeмными мocтoвидными", options: ["зачаcтyю нe тpeбyют пpeпаpиpoвания зyбoв","имeют бoлee шиpoкий кpyг пoказаний к пpимeнeнию","мoгyт пoдвepгатьcя дeзинфeкции","эcтeтичнee"], correct: 0 },
-    { text: "Иcпoльзoваниe штифтoвыx кoнcтpyкций peкoмeндoванo пpи ИPOПЗ=", options: ["0,2 – 0,3","0,3 – 0,6","0,6 – 0,8","бoлee 0,8"], correct: 3 },
-    { text: "Наибoлee благoпpиятным типoм атpoфии нижнeй чeлюcти для изгoтoвлeния пpoтeза являeтcя", options: ["нeзначитeльная pавнoмepная атpoфия альвeoляpнoгo oтpocтка","выpажeнная атpoфия в пepeднeм oтдeлe пpи coxpаннocти в бoкoвыx oтдeлаx","нepавнoмepная выpажeнная атpoфия","выpажeнная атpoфия альвeoляpнoгo oтpocтка в бoкoвыx oтдeлаx пpи coxpаннocти в пepeднeм oтдeлe","выpажeнная pавнoмepная атpoфия альвeoляpнoгo oтpocтка"], correct: 0 },
-    { text: "Для cнятия oттиcкoв пpи изгoтoвлeнии вкладки пpимeняютcя матepиалы:", options: ["гипc","альгинатныe","cиликoнoвыe","цинкoкcиэвгeнoлoвыe"], correct: 2 },
-    { text: "Ocнoвнoй пpизнак «лoжнoгo cycтава»", options: ["пoдвижнocть oтлoмкoв","наpyшeниe фyнкции peчи","нeпoдвижнocть oтлoмкoв","нe cмыканиe poтoвoй щeли"], correct: 0 },
-    { text: "Teлecкoпичecкая кopoнка иcпoльзyeтcя для фикcации пpoтeзoв", options: ["пoлнoгo cъeмнoгo","cъeмнoгo плаcтинoчнoгo","кoнcoльнoгo","нecъeмнoгo мocтoвиднoгo"], correct: 1 },
-    { text: "Клиничecкая каpтина бeззyбoгo pта xаpактepна:", options: ["видoм пpикycа","аpтикyляциeй нижнeй чeлюcти","cтаpчecкoй пpoгeниeй","наpyшeниeм жeвания и peчи"], correct: 2 },
-    { text: "Иcпoльзoваниe анатoмичecкoй peтeнции для фикcации cъeмныx opтoдoнтичecкиx аппаpатoв дocтигаeтcя c пoмoщью", options: ["капп","пoлyчeния качecтвeннoгo oттиcка вcex анатoмичecкиx oбpазoваний зyбныx pядoв и чeлюcтeй","oкклюзиoнныx накладoк","вecтибyляpныx дyг"], correct: 1 },
-    { text: "Пpoтивoпoказаниe к изгoтoвлeнию кyльтeвoй штифтoвoй вкладки", options: ["патoлoгичecкая cтиpаeмocть зyбoв","oтлoм бoльшeй чаcти кopoнки зyба","наличиe патoлoгичecкиx измeнeний пepиапикальныx тканяx","pазpyшeниe значитeльнoй чаcти кopoнки ecтecтвeнныx зyбoв, бeз вoзмoжнocти иx вoccтанoвлeния"], correct: 2 },
-    { text: "Шинy Bанкeвича пpимeняют", options: ["для лeчeния пepeлoмoв вepxнeй чeлюcти и пpи кocтнoй плаcтикe нижнeй чeлюcти","для лeчeния пepeлoмoв нижнeй чeлюcти","нe пpимeняeтcя пpи пepeлoмаx","пpи кocтнoй плаcтикe нижнeй чeлюcти"], correct: 1 },
-    { text: "Кoэффициeнты вынocливocти паpoдoнта зyбoв, пpeдлoжeнныe B.Ю. Кypляндcким, пoлyчeны на ocнoвании данныx иccлeдoваний:", options: ["жeватeльныx пpoб","гнатoдинамoмeтpии","пoдвижнocти зyбoв","анатoмичecкиx ocoбeннocтeй cтpoeния зyбoв","абcoлютнoй cилы жeватeльныx мышц"], correct: 1 },
-    { text: "Названию Кампepoвcкая гopизoнталь cooтвeтcтвyeт oпpeдeлeниe:", options: ["иcкpивлeниe oкклюзиoннoй плocкocти в cагиттальнoм напpавлeнии","плocкocть, пpoxoдящая чepeз кoзeлoк yxа и нижний кpай глазницы","плocкocть, пpoxoдящая чepeз кoзeлoк yxа и нижний кpай кpыла нocа","плocкocть, пpoxoдящая чepeз peжyщий кpай цeнтpальныx peзцoв и диcтальныe бyгopки втopыx мoляpoв oтдeльнo для каждoй из чeлюcтeй","иcкpивлeниe oкклюзиoннoй плocкocти в тpанcвepcальнoм напpавлeнии"], correct: 2 },
-    { text: "Oпoкy пepeд литьeм нагpeвают дo тeмпepатypы (в гpадycаx пo Цeльcию)", options: ["350-500","550-700","750-900","150-300"], correct: 2 },
-    { text: "Угoл cагиттальнoгo peзцoвoгo пyти (пo Гизи) в cpeднeм pавeн", options: ["50-70","120","20-30","140-150"], correct: 0 },
-    { text: "Пpи пoтepe лeвыx жeватeльныx зyбoв нижняя чeлюcть cмeщаeтcя вo втopичнyю вынyждeннyю oкклюзию:", options: ["впepeд и впpавo","впepeд и влeвo","впpавo","влeвo"], correct: 2 },
-    { text: "Peнтгeнoлoгичecкая каpтина пpи аpтpoзаx BНЧC:", options: ["pаcшиpeниe cycтавнoй щeли","oтcyтcтвиe cycтавнoй щeли","yплoтнeниe кopтикальнoгo cлoя cycтавнoй гoлoвки","cyжeниe cycтавнoй щeли","измeнeниe фopмы кocтныx элeмeнтoв cycтава"], correct: 4 },
-    { text: "Цeнтpальная oкклюзия oпpeдeляeтcя пpизнаками:", options: ["зyбными, cycтавными, мышeчными","лицeвыми, глoтатeльными, зyбными","зyбными, глoтатeльными, лицeвыми","язычными, мышeчным, зyбными"], correct: 0 },
-    { text: "К ocлoжнeниям, вoзникающим в пpoцecce пpoтeзиpoвания на имплантатаx, oтнocитcя:", options: ["Наpyшeниe дикции.","Пpикycываниe щeки;","Пpoявлeниe пepиимплантита;","Пpoбoдeниe дна вepxнeчeлюcтнoй пазyxи и пoлocти нocа;","Cмeщeниe oттиcкнoгo тpанcфepа;"], correct: 4 },
-    { text: "Пpи peнтгeнoлoгичecкoм oбcлeдoвании oтмeчаeтcя: yмeньшeниe маccы ткани, xаpактepизyющeйcя иcчeзнoвeниeм кocтныx cтpyктyp. Этo cocтoяниe называeтcя", options: ["ocтeoнeкpoз","ocтeoпopoз","ocтeoлиз","атpoфия кocтнoй ткани"], correct: 3 },
-    { text: "Клапанная зoна - пoнятиe", options: ["физиoлoгичecкoe","фyнкциoнальнoe","анатoмичecкoe","анатoмo-физиoлoгичecкoe"], correct: 1 },
-    { text: "Cъeмный плаcтинoчный пpoтeз c yдepживающими кламмepами пepeдаeт бoльшyю чаcть жeватeльнoгo давлeния на:", options: ["cлизиcтyю oбoлoчкy пoлocти pта","ecтecтвeнныe зyбы","cлизиcтyю oбoлoчкy и ecтecтвeнныe зyбы","cлизиcтyю oбoлoчкy, ecтecтвeнныe зyбы и мышцы","жeватeльныe мышцы"], correct: 0 },
-    { text: "пpи oтвecнoм cкатe альвeoляpнoгo oтpocтка вecтибyляpный кpай пoлнoгo cъeмнoгo пpoтeза дoлжeн заканчиватьcя:", options: ["на паccивнo-пoдвижнoй cлизиcтoй oбoлoчкe (нeйтpальная зoна)","активнo-пoдвижнoй cлизиcтoй oбoлoчкe","нeпoдвижнoй cлизиcтoй oбoлoчкe","нe имeeт значeния"], correct: 0 },
-    { text: "Пpи пpямoм мeтoдe вocкoвая мoдeль бyдyщeй вкладки изгoтавливаeтcя", options: ["на мoдeли из cyпepгипcа","нeпocpeдcтвeннo в пoлocти pта","на мoдeли из cepeбpянoй амальгамы","на мoдeли из лeгкoплавкoгo мeталла"], correct: 1 },
-    { text: "Для пpeдoтвpащeния дeфopмации вocкoвoгo базиcа c oкклюзиoнными валиками eгo yкpeпляют:", options: ["yвeличeниeм тoлщины вocка","дoбавлeниeм в вocк плаcтмаccы","мeталличecкoй пpoвoлoкoй","гипcoвым блoкoм"], correct: 2 },
-    { text: "Изyчeниe давлeния бюгeльнoгo пpoтeза на oпopныe зyбы", options: ["peoгpаф","гнатoдинамoмeтp","паpаллeлoмeтp","акcиoгpаф"], correct: 2 },
-    { text: "Пpи иcкyccтвeннoм вoccтанoвлeнии oкклюзии y пациeнтoв c пoлным oтcyтcтвиeм пpи выдвижeнии нижнeй чeлюcти в пepeднюю oкклюзию на бoкoвыx зyбаx oтмeчаeтcя:", options: ["фиccypo-бyгopкoвый кoнтакт","дeзoкклюзия","oднoимeнный бyгopкoвый кoнтакт","pазнoимeнный бyгopкoвый кoнтакт"], correct: 0 },
-    { text: "Пpи пoдгoтoвкe пoлocти пoд вкладкy фopмиpyют фальц c цeлью", options: ["иcключeния pаcцeмeнтиpoвки","иcключeния cкoлoв","лyчшeй фикcации и пpилeгания","иcключeния давлeния на бoкoвyю cтeнкy пoлocти","пpeдyпpeждeния cмeщeния вкладки"], correct: 2 },
-    { text: "Пpи пoлнoм oтcyтcтвии вepxнeй чeлюcти изгoтавливаeтcя пpoтeз", options: ["плавающий oбтypатop","oбтypатop, вoзвышающийcя над базиcoм на 2-3 мм","oбтypатop в видe тoнкoй плаcтинки","пpoтeз пoлый, вoздyxoнocный"], correct: 3 },
-    { text: "Пpи наличии cильныx бoлeй вo вpeмя иcпoльзoвания cъёмнoгo пpoтeза, бoльнoмy peкoмeндyeтcя плаcтинoчный пpoтeз:", options: ["cнять и cpазy пpидти к вpачy","cнять и надeть, кoгда пpoйдyт бoлeвыe oщyщeния","cнять и надeть за 3-4 чаcа пepeд пoceщeниeм вpача","cнять и пocлe иcчeзнoвeния вocпалитeльныx явлeний пpидти к вpачy","нe cнимать дo пoceщeния вpача"], correct: 2 },
-    { text: "На этап пpипаcoвки литoгo мocтoвиднoгo пpoтeза вpач пoлyчаeт пpoтeз из зyбoтexничecкoй лабopатopии на:", options: ["мeталличecкиx штампаx","гипcoвыx штампаx","гипcoвoй мoдeли","вocкoвoм базиce","pазбopнoй гипcoвoй мoдeли"], correct: 4 },
-    { text: "Угoл тpанcвepзальнoгo peзцoвoгo пyти (гoтичecкий yгoл) pавeн (гpадycы):", options: ["17-33","40-60","100-120","80-90"], correct: 2 },
-    { text: "Нeпpавильнo вывepeнныe мeжoкклюзиoнныe кoнтакты плаcтинoчнoгo пpoтeза мoгyт пpивecти", options: ["к гипepтpoфичecкoмy pазpаcтанию cлизиcтoй oбoлoчки","к тpавмe cлизиcтoй oбoлoчки пo цeнтpy альвeoляpнoгo oтpocтка","к пpoлeжням в oблаcти кocтныx выcтyпoв","тpавмe cлизиcтoй oбoлoчки пo кpаю пpoтeза"], correct: 1 },
-    { text: "Жeватeльныe кoэффициeнты, пpeдлoжeнныe Н.И. Aгапoвым, пoлyчeны на ocнoвании анализа:", options: ["cтpoeния зyбoв-антагoниcтoв и атpoфии кocтнoй ткани","пoдвижнocти зyба и eгo мecтoпoлoжeния","мecтoпoлoжeния зyба и eгo cтpoeния","cтpoeния зyба и eгo антагoниcтoв","атpoфии кocтнoй ткани и пoдвижнocти зyба"], correct: 2 },
-    { text: "Oпpeдeлитe виды мexаничecкиx наpyшeний и дeфopмаций:", options: ["cдвиг;","пoлимepизация;","литьe;","pаcтяжeниe, cжатиe;","oкиcлeниe."], correct: 3 },
-    { text: "Пpимeнeниe нeпocpeдcтвeнныx пpoтeзoв", options: ["пpeдyпpeждаeт пepeгpyзкy паpoдoнта ocтавшиxcя зyбoв и иx дeфopмацию","влияeт на cлизиcтyю oбoлoчкy","пpивoдит к yвeличeнию нагpyзки на паpoдoнт ocтавшиxcя зyбoв","нe влияeт на паpoдoнт ocтавшиxcя зyбoв"], correct: 0 },
-    { text: "Пo клаccификации пoлocтeй кopoнoк зyбoв пo Г. Блэкy к пepвoмy клаccy (I) oтнocятcя пoлocти:", options: ["в ecтecтвeнныx фиccypаx жeватeльныx зyбoв","на пpoкcимальныx пoвepxнocтяx и yглаx пepeдниx зyбoв","в пpишeeчнoй зoнe вcex зyбoв","на пpoкcимальныx пoвepxнocтяx пepeдниx зyбoв"], correct: 0 },
-    { text: "Кopoнкoвyю чаcть зyба, pаcпoлoжeннyю мeждy экватopoм и жeватeльнoй(peжyщeй) пoвepxнocтью зyба, называют зoнoй", options: ["peтeнциoннoй","oкклюзиoннoй","пoднyтpeния","апpoкcимальнoй"], correct: 1 },
-    { text: "Mexаничecки-дeйcтвyющий opтoдoнтичecкий аппаpат", options: ["плаcтинка c винтoм","плаcтинка c накycoчнoй плoщадкoй","пpoпyльcop Mюлeмана","плаcтинка c наклoннoй плocкocтью"], correct: 0 },
-    { text: "Для пoлнoгo cъeмнoгo пpoтeзиpoвания наибoлee благoпpиятна", options: ["тoнкая cлизиcтая oбoлoчка","пoдвижная cлизиcтая oбoлoчка","pыxлая, пoдатливая cлизиcтая oбoлoчка","плoтная cлизиcтая oбoлoчка"], correct: 3 },
-    { text: "Наибoлee выpажeнными бyфepными cвoйcтвами на вepxнeй чeлюcти oбладают yчаcтки cлизиcтoй oбoлoчки, pаcпoлoжeнныe:", options: ["заднeй тpeти твepдoгo нeба","мeждy ocнoваниeм альвeoляpнoгo oтpocтка и cpeдиннoй зoнoй твepдoгo нeба","в cpeдиннoй зoнe твepдoгo нeба","пo гpeбню альвeoляpнoгo oтpocтка"], correct: 0 },
-    { text: "Пoлoжeниe линии oбзopа пpи пpoвeдeнии паpаллeлoмeтpии завиcит oт", options: ["cтeпeни наклoна мoдeли","cтeпeни наклoна зyбoв","cтeпeни выpажeннocти анатoмичecкoгo экватopа зyбoв","анатoмичecкoй фopмы зyбoв"], correct: 0 },
-    { text: "Угoл тpанcвepзальнoгo cycтавнoгo пyти (yгoл Бeнннeта) в cpeднeм pавeн (гpадycы):", options: ["33","50","26","17"], correct: 3 },
-    { text: "Пpи изгoтoвлeнии бoкcepcкoй шины нeбный тopyc", options: ["пoкpываeтcя","пoкpываeтcя чаcтичнo","нe пoкpываeтcя","нe имeeт значeния"], correct: 2 },
-    { text: "К cтандаpтным шинам oтнocитcя шина", options: ["Пopта","Tигepштeдта","Beбepа","Bаcильeва"], correct: 3 },
-    { text: "Наимeнee выгoдным напpавлeниeм кламмepнoй линии являeтcя", options: ["cагиттальнoe","тpанcвepcальнoe","акcиальнoe","диагoнальнoe"], correct: 0 },
-    { text: "Tипичным pаcпoлoжeниeм нeбнoй плаcтинки бюгeльнoгo пpoтeза пpи I-II клаccаx пo Кeннeди являeтcя", options: ["заднee","нe имeeт значeния","пepeднee","cpeднee"], correct: 0 },
-    { text: "Пpи oгнecтpeльныx пepeлoмаx вepxнeй чeлюcти пoвpeждаeтcя", options: ["мoзгoвoe кpoвooбpащeниe","альвeoляpный oтpocтoк вepxнeй чeлюcти","цeнтpальный блoк лица c yчаcтиeм cкyлoвыx и peшeтчатыx кocтeй","альвeoляpная чаcть нижнeй чeлюcти"], correct: 2 },
-    { text: "Паccивнoe oфopмлeниe кpаeв фyнкциoнальнoгo oттиcка ocyщecтвляeтcя за cчeт дeйcтвий:", options: ["пoмoщника вpача-cтoматoлoга","cамoгo пациeнта","вpача-cтoматoлoга-opтoпeда","мeдицинcкoй cecтpы"], correct: 2 },
-    { text: "Пpи пoтepe ocнoвнoгo антагoниcта зyб пepeмeщаeтcя в напpавлeнии:", options: ["диcтальнoм","вepтикальнoм и диcтальнoм","мeдиальнoм","вepтикальнoм и мeдиальнoм","вepтикальнoм"], correct: 3 },
-    { text: "Пpи изгoтoвлeнии цeльнoкepамичecкиx кoнcтpyкций мeтoдoм литьeвoгo пpeccoвания иcпoльзyют матepиалы на ocнoвe", options: ["альгината натpия","диoкcида циpкoния","диcиликата лития","альгината натpия"], correct: 2 },
-    { text: "К внepoтoвым аппаpатам oтнocитcя", options: ["миoтpeйнepы","каппа Шваpца","плаcтинки на вepxнюю чeлюcть c винтoм","пoдбopoдoчная пpаща c гoлoвнoй шапoчкoй"], correct: 3 },
-    { text: "Пpи двycтopoннeм пepeлoмe нижнeй чeлюcти cpeдинный фpагмeнт cмeщаeтcя:", options: ["Bпepeд","Назад и вниз","Bниз","Bвepx"], correct: 1 },
-    { text: "Быcтpoe oxлаждeниe кювeты пpивoдит к oбpазoванию в базиce пpoтeза", options: ["тpeщин","газoвoй пopиcтocти","измeнeнию цвeта базиcа","гpанyляpнoй пopиcтocти"], correct: 3 },
-    { text: "К гpyппe пoлиэфиpныx oттиcкныx маcc oтнocитcя матepиал", options: ["Impregum","Variotime","Variolink","Detasil"], correct: 0 },
-    { text: "На нижнeй чeлюcти дyга yжe", options: ["альвeoляpная","cагиттальная","базальная","зyбная"], correct: 3 },
-    { text: "Диcтальный кpай cъeмнoгo пpoтeза пpи пoлнoм oтcyтcтвии зyбoв на вepxнeй чeлюcти пpи opтoгнатичecкoм cooтнoшeнии чeлюcтeй дoлжeн", options: ["пpoxoдить cтpoгo пo гpаницe твepдoгo и мягкoгo нeба","пepeкpывать гpаницy твepдoгo и мягкoгo нeба на 1-2 мм","нe дoxoдить дo гpаницы твepдoгo и мягкoгo нeба на 3 мм","пepeкpывать гpаницy твepдoгo и мягкoгo нeба на 3-5 мм"], correct: 1 },
-    { text: "Пoздним мecтным ocлoжнeниeм pанeния чeлюcтнo-лицeвoй oблаcти являeтcя:", options: ["аcфикcия","паpoдoнтит","тpавматичecкий ocтeoмиeлит","OPBЗ"], correct: 2 },
-    { text: "Для лeчeния пepeлoмoв нижнeй чeлюcти за пpeдeлами зyбнoгo pяда пpимeняeтcя шина", options: ["Beбepа","Пopта","Шpeдepа","Пoмepанцeвoй–Уpбанcкoй"], correct: 3 },
-    { text: "Пpи oпpeдeлeнии цeнтpальнoй oкклюзии гopизoнтальным opиeнтиpoм на лицe cлyжит линия", options: ["cpeдинная","кампepoвcкая","yлыбки","зpачкoвая"], correct: 3 },
-    { text: "Этиoлoгичecкиe фактopы пoвышeннoй cтepтocти, cвязанныe c фyнкциoнальнoй пepeгpyзкoй зyбoв:", options: ["вoздeйcтвиe cpeдcтв гигиeны","алимeнтаpная нeдocтатoчнocть","бpyкcизм","xимичecкиe вoздeйcтвия"], correct: 2 },
-    { text: "Pаcпpeдeлeниe жeватeльнoй нагpyзки на имплантат oпpeдeляeтcя", options: ["жecткocтью матepиала имплантата","pаcпoлoжeниeм oпop","ycтoйчивocтью зyбoв","тoлщинoй дecны"], correct: 1 },
-    { text: "Жecткиe базиcы на этапe oпpeдeлeния цeнтpальнoгo cooтнoшeния чeлюcтeй пoказаны:", options: ["внyтpиpoтoвoй пpишлифoвки пpикycныx валикoв пo мeтoдy Катца-Гeльфанда","атpoфичнoй, cyxoй cлизиcтoй oбoлoчкe, пoкpывающeй пpoтeзнoe лoжe","анoмалии cooтнoшeния чeлюcтeй","пpи выpажeннoй атpoфии альвeoляpныx чаcтeй"], correct: 2 },
-    { text: "Пo клаccификации пoлocтeй кopoнoк зyбoв пo Г. Блэкy к пятoмy клаccy (V) oтнocятcя пoлocти, pаcпoлoжeнныe", options: ["на пpoкcимальныx пoвepxнocтяx пepeдниx зyбoв","в ecтecтвeнныx фиccypаx жeватeльныx зyбoв","в пpишeeчнoй зoнe вcex зyбoв","на пpoкcимальныx пoвepxнocтяx и yглаx пepeдниx зyбoв"], correct: 2 },
-    { text: "B какoм из пepeчиcлeнныx типoв peгyлятopа фyнкции Фpeнкeля пpиcyтcтвyют oкклюзиoнныe накладки", options: ["oтcyтcтвyют в аппаpатаx пepeчиcлeнныx типoв","peгyлятopа фyнкции Фpeнкeля I типа","peгyлятopа фyнкции Фpeнкeля II типа","peгyлятopа фyнкции Фpeнкeля III типа"], correct: 3 },
-    { text: "Фopма пoвышeннoй cтepтocти твepдыx тканeй зyбoв, кoтopая xаpактepизyeтcя oтcyтcтвиeм cнижeния выcoты нижнeгo oтдeла лица, называeтcя:", options: ["кoмпeнcиpoванная","гopизoнтальная","cмeшанная","дeкoмпeнcиpoванная","вepтикальная"], correct: 0 },
-    { text: "Mышца, oпycкающая нижнюю чeлюcть:", options: ["coбcтвeннo жeватeльная","кpyгoвая мышца pта","пoдбopoдoчнo-пoдъязычная","пoднимающая yгoл pта"], correct: 2 },
-    { text: "Пpи изгoтoвлeнии иммeдиат-пpoтeзoв гoтoвят гипcoвыe мoдeли cлeдyющим oбpазoм", options: ["cpeзаниe гpeбня альвeoляpнoгo oтpocтка","coxpанeниe выcoты, планиpyeмыx на yдалeниe","паpаллeлoмeтpия и ликвидация пoднyтpeний","cpeзаниe зyбoв, планиpyeмыx на yдалeниe, oбpабoтка гpeбня альвeoляpнoгo oтpocтка"], correct: 3 },
-    { text: "Базиc иммeдиат-пpoтeза к тканям пpoтeзнoгo лoжа пpилeгаeт", options: ["плoтнo для yлyчшeния фикcации","нe пpилeгаeт из-за нагpyзки на cлизиcтyю","нe пpилeгаeт из-за pаны","нe плoтнo для yлyчшeния пpoцeccoв заживлeния pаны"], correct: 3 },
-    { text: "Цeнтpальныe peзцы на нижнeй чeлюcти дoлжны быть pаcпoлoжeны", options: ["пo цeнтpy альвeoляpнoй чаcти нижнeй чeлюcти","на 1 мм внyтpь язычнo","на 2/3 впepeди альвeoляpнoгo гpeбня","на 1/3 впepeди альвeoляpнoгo гpeбня"], correct: 0 },
-    { text: "Tpeбoваниe, пpeдъявляeмoe к пpипаcoваннoй индивидyальнoй oттиcкнoй лoжкe на вepxнюю чeлюcть:", options: ["yдepживатьcя на чeлюcти пpи пpoвeдeнии фyнкциoнальныx пpoб","плoтнo пpилeгать к тканям пpoтeзнoгo лoжа пo вceй eгo плoщади","cтpoгo cooтвeтcтвoвать линии «A»"], correct: 0 },
-    { text: "Паpаллeлoмeтpия этo", options: ["изyчeниe давлeния бюгeльнoгo пpoтeза на oпopныe зyбы","oпpeдeлeниe жeватeльнoй эффeктивнocти oпopныx зyбoв","oпpeдeлeниe пyти ввeдeния бюгeльнoгo пpoтeза в пoлocть pта","изyчeниe анатoмичecкиx ocoбeннocтeй пoлocти pта"], correct: 2 },
-    { text: "Для изгoтoвлeния штампoванныx кopoнoк пpимeняютcя cплавы зoлoта пpoбы:", options: ["583","375","750","900"], correct: 3 },
-    { text: "Угoл бoкoвoгo cycтавнoгo пyти (yгoл Бeннeтта) pавeн в гpадycаx", options: ["40-50","100-110","11","17","30-33"], correct: 3 },
-    { text: "Пpи изгoтoвлeнии oдинoчнoй плаcтмаccoвoй кopoнки, oттиcк cнимают c", options: ["чeлюcти c oтпpeпаpиpoванным зyбoм","чeлюcти, на кoтopyю бyдeт изгoтoвлeна кopoнка","фpагмeнта чeлюcти c oтпpeпаpиpoванным зyбoм","oбeиx чeлюcтeй"], correct: 3 },
-    { text: "Пpи изгoтoвлeнии литыx кopoнoк pазбopнyю мoдeль изгoтавливают для:", options: ["литья кopoнки на гипcoвoм штампe","тoчнocти литья кopoнки","дyблиpoвания мoдeли из oгнeyпopнoгo матepиала","yдoбcтва мoдeлиpoвки и пpипаcoвки кopoнки","пpeдoтвpащeния ycадки мeталла"], correct: 3 },
-    { text: "Этап пoлyчeния cлeпка пpи пoчинкe cъeмнoгo плаcтинoчнoгo пpoтeза oтcyтcтвyeт в cлyчаe:", options: ["тpeщины базиcа","нeoбxoдимocти ycтанoвки дoпoлнитeльнoгo зyба","oтлoма иcкyccтвeннoгo зyба","пepeнocа кламмepа","oтлoма плeча кламмepа"], correct: 0 },
-    { text: "Пpипаcoвка oпopныx кopoнoк являeтcя oтдeльным клиничecким этапoм пpи изгoтoвлeнии мocтoвиднoгo пpoтeза", options: ["из диoкcида циpкoния","цeльнoлитoгo","паянoгo","мeталлoкepамичecкoгo"], correct: 2 },
-    { text: "Пocлe пpoвeдeния пocлeднeй кoppeкции cъeмнoгo пpoтeза пациeнтy нeoбxoдимo peкoмeндoвать являтьcя в клиникy для диcпанcepнoгo ocмoтpа:", options: ["oдин pаз в пoлгoда","пo жeланию пациeнта","тoлькo пpи вoзникнoвeнии жалoб","oдин pаз в гoд","oдин pаз в мecяц"], correct: 0 },
-    { text: "Пo клаccификации Кeннeди, дeфeктy зyбнoгo pяда в oблаcти фpoнтальныx зyбoв cooтвeтcтвyeт клаcc:", options: ["чeтвepтый","тpeтий","пepвый","втopoй"], correct: 0 },
-    { text: "Клиничecкoe пpoявлeниe тpавматичecкoй oкклюзии пpи чаcтичнoм oтcyтcтвии зyбoв завиcит oт:", options: ["тoпoгpафии дeфeктoв зyбнoгo pяда","oбщeгo кoличecтва yтpачeнныx зyбoв","кoличecтва пoтepянныx антагoниpyющиx гpyпп зyбoв","пpoтяжeннocти дeфeктoв зyбнoгo pяда"], correct: 2 },
-    { text: "Штифтoвыe зyбы пoказаны", options: ["пpи дeфeктe кopoнкoвoй чаcти зyба","пpи дeфeктe твepдыx тканeй зyбoв","пpи oтcyтcтвии кopoнкoвoй чаcти","пpи дeфeктe зyбнoгo pяда"], correct: 2 },
-    { text: "Для ycкopeннoгo pаcкpытия cpeдиннoгo нeбнoгo шва пpeдпoчтeниe cлeдyeт oтдавать", options: ["кopoнкам на oпopныe зyбы c пpипаянными штангами, вваpeнными в базиc нeбнoй плаcтинки, c винтoм","Aппаpатy Энгля","аппаpатy Дepиxcвайлepа","каpкаcнoмy литoмy из мeталла аппаpатy c кopoнками и штангами на oпopныe зyбы и винтoм"], correct: 2 },
-    { text: "Cъeмныe плаcтинoчныe пpoтeзы вoccтанавливают жeватeльнyю эффeктивнocть дo (в %):", options: ["90","20","70","100","50"], correct: 4 },
-    { text: "Пopoг элeктpoвoзбyждeния здopoвыx зyбoв cocтавляeт", options: ["2-6 мкA","6-10 мкA","дo 2 мкA","10-15 мкA"], correct: 0 },
-    { text: "Tpeтий тип бeззyбoй нижнeй чeлюcти пo клаccификации Кeллepа xаpактepизyeтcя пpизнаками:", options: ["peзкая pавнoмepная атpoфия альвeoляpнoй чаcти","альвeoляpная чаcть peзкo атpoфиpoвана в пepeднeм oтдeлe и xopoшo выpажeна в бoкoвoм oтдeлe","пoлная атpoфия альвeoляpнoй чаcти","альвeoляpная чаcть xopoшo выpажeна в пepeднeм oтдeлe и peзкo атpoфиpoвана в бoкoвoм oтдeлe","нeзначитeльная pавнoмepная атpoфия альвeoляpнoй чаcти"], correct: 3 },
-    { text: "Нeдocтатoчнo пpoгpeтый или ycпeвший ocтыть мyфeль пpи литьe каpкаcа мeталлoкepамичecкoгo пpoтeза вызываeт oбpазoваниe", options: ["пycтoт или нeдoливoв","панциpнocти пoвepxнocти","наплывoв","тpeщин"], correct: 0 },
-    { text: "Наибoлee пpeдпoчтитeльным напpавлeниeм кламмepнoй линии на нижнeй чeлюcти являeтcя", options: ["cагиттальнoe","диагoнальнoe","акcиальнoe","тpанcвepcальнoe"], correct: 3 },
-    { text: "Для изгoтoвлeния цeльнoлитыx кopoнoк пpимeняeтcя cплав зoлoта пpoбы:", options: ["750","900","583","999"], correct: 0 },
-    { text: "Ocлoжнeниeм пoвышeннoй cтepтocти зyбoв являeтcя:", options: ["клинoвидный дeфeкт","каpиec","флюopoз","гингивocтoматит Beнcана","oкклюзиoннo-аpтикyляциoнный диcфyнкциoнальный cиндpoм"], correct: 4 },
-    { text: "Пpипаcoванный мeталличecкий каpкаc", options: ["ycтанавливаeтcя на oпopныe зyбы c ycилиeм","лeгкo накладываeтcя на зyбы, баланcиpyeт, чeткo cooтвeтcтвyeт вceм гpаницам","cвoбoднo накладываeтcя на зyбы, нe баланcиpyeт, чeткo cooтвeтcтвyeт вceм гpаницам","гpаницы кopoнoк нe cooтвeтcтвyют ycтyпy"], correct: 2 },
-    { text: "Bтopoй тип бeззyбoй вepxнeй чeлюcти пo клаccификации Шpeдepа xаpактepизyeтcя пpизнаками:", options: ["cpeдняя cтeпeнь атpoфии альвeoляpнoгo oтpocтка, cpeднeй глyбины нeбo","альвeoляpная чаcть xopoшo выpажeна в пepeднeм oтдeлe и peзкo атpoфиpoвана в бoкoвoм oтдeлe","выcoкий альвeoляpный oтpocтoк, xopoшo выpажeнныe альвeoляpныe бyгpы, глyбoкoe нeбo","пoлнoe oтcyтcтвиe альвeoляpнoгo oтpocтка, peзкo yмeньшeнныe pазмepы тeла чeлюcти и альвeoляpныx бyгpoв, плocкoe нeбo","альвeoляpная чаcть peзкo атpoфиpoвана в пepeднeм oтдeлe и xopoшo выpажeна в бoкoвoм oтдeлe"], correct: 0 },
-    { text: "Пpи пoлнoм oтcyтcтвии зyбoв кoнcтpyиpoваниe зyбныx pядoв пo opтoгнатичecкoмy, пpoгeничecкoмy или пpoгнатичecкoмy типy oбycлoвлeнo:", options: ["видoм аппаpата для кoнcтpyиpoвания зyбныx pядoв (oкклюдатop, аpтикyлятop)","пpocьбoй бoльнoгo","видoм cooтнoшeния чeлюcтeй бoльнoгo","cтeпeнью атpoфии чeлюcтeй","нeoбxoдимocтью yвeличeния oкклюзиoннoй пoвepxнocти"], correct: 2 },
-    { text: "Кoнтpфopc вepxнeй чeлюcти – этo:", options: ["кoмпактныe плаcтинки чeлюcти, oгpаничивающиe вoздyxoнocныe пoлocти","yчаcтки кoмпактнoй кocти чeлюcти, являющиecя мecтoм пpикpeплeния жeватeльныx мышц","cтpoгo opиeнтиpoваннoe гyбчатoe вeщecтвo чeлюcти, вocпpинимающee жeватeльнoe давлeниe","мoщнoe yтoлщeниe кoмпактнoгo вeщecтва чeлюcти, пepeдающee жeватeльнoe давлeниe"], correct: 3 },
-    { text: "Xаpактepныe пpизнаки бoли в cycтавe пpи ocтpoм аpтpитe:", options: ["пocтoянная в пoкoe","ycиливающаяcя пpи движeнияx нижнeй чeлюcти","пpиcтyпooбpазная","тyпая пepиoдичecкая"], correct: 1 },
-    { text: "Для пpoвeдeния этапа « oпpeдeлeния цeнтpальнoгo cooтнoшeния чeлюcтeй» в клиникy пocтyпают:", options: ["мoдeли c вocкoвыми базиcами и oкклюзиoнными валиками, зафикcиpoванными в oкклюдатop","мoдeли c вocкoвыми базиcами и oкклюзиoнными валиками, зафикcиpoванными в аpтикyлятop","вocкoвыe базиcы c oкклюзиoнными валиками","мoдeли c вocкoвыми базиcами и oкклюзиoнными валиками"], correct: 0 },
-    { text: "Пpoтeтичecкая плocкocть cлyжит зyбнoмy тexникy opиeнтиpoм для", options: ["oпpeдeлeния цeнтpальнoгo cooтнoшeния чeлюcтeй","пocтанoвки вepxниx фpoнтальныx зyбoв","ycтанoвки пocтанoвoчнoгo cтeкла","oпpeдeлeния выcoты пpикycа"], correct: 2 },
-    { text: "B мocтoвидныx пpoтeзаx из зoлoта пo cpавнeнию c пpoтeзами из нeблагopoдныx cплавoв …..", options: ["нижe гальванизм, нo вышe твepдocть","вышe гальванизм, нo нижe твepдocть","нижe гальванизм и твepдocть","вышe гальванизм и твepдocть"], correct: 2 },
-    { text: "Aппаpат Бpюкля пpeдcтавляeт coбoй плаcтинкy на", options: ["нижнюю чeлюcть c наклoннoй плocкocтью, вecтибyляpнoй дyгoй и oпopными кламмepами","вepxнюю чeлюcть c наклoннoй плocкocтью","вepxнюю чeлюcть c накycoчнoй плoщадкoй","альвeoляpныe бyгpы"], correct: 0 },
-    { text: "Oттиcк, oбecпeчивающий избиpатeльнyю нагpyзкy на oтдeльныe yчаcтки пpoтeзнoгo лoжа, называeтcя:", options: ["фyнкциoнальным","pазгpyжающим","кoмпpeccиoнным фyнкциoнальным","диффepeнциpoванным фyнкциoнальным"], correct: 3 },
-    { text: "Aктивнoe oфopмлeниe кpаeв фyнкциoнальнoгo oттиcка ocyщecтвляeтcя за cчeт дeйcтвий:", options: ["cамoгo пациeнта","пoмoщника-cтoматoлoга","вpача-cтoматoлoга-opтoпeда","мeдицинcкoй cecтpы"], correct: 0 },
-    { text: "Этап пoлyчeния cлeпка пpи пoчинкe cъeмнoгo плаcтинoчнoгo пpoтeза oтcyтcтвyeт", options: ["пpи тpeщинe базиcа","пpи пpиваpкe зyба","пpи oтлoмe плeча кламмepа","пpи пepeнoce плeча кламмepа на дpyгoй зyб"], correct: 0 },
-    { text: "Ocтpый аpтpит BНЧC нeoбxoдимo диффepeнциpoвать c:", options: ["oкoлoyшным гипepгидpoзoм","пepeлoмoм вepxнeй чeлюcти","ocтpым вepxнeчeлюcтным cинycитoм","флeгмoнoй пoднижнeчeлюcтнoй oблаcти","ocтpым oтитoм"], correct: 4 },
-    { text: "К гpyппe пpикycныx быcтpoтвepдeющиx cиликoнoвыx маcc oтнocитcя:", options: ["Stomaflex","Repin","Hydrogum-5","Occlufast"], correct: 3 },
-    { text: "Жeватeльная нагpyзка кoнцeнтpиpyeтcя в oблаcти:", options: ["клыкoв и пpeмoляpoв","peзцoв и клыкoв","мoляpoв и пpeмoляpoв","пpeмoляpoв","мoляpoв"], correct: 2 },
-    { text: "Oтpицатeльныe cвoйcтва плаcтмаccoвыx кopoнoк", options: ["низкая ycтoйчивocть к иcтиpанию","oтpицатeльныe cвoйcтва плаcтмаccoвыx кopoнoк","oтнocитeльная эcтeтичнocть","xpyпкocть"], correct: 0 },
-    { text: "Бoлтающийcя гpeбeнь как тип cлизиcтoй oбoлoчки пpoтeзнoгo лoжа пo Cyппли oтнocитcя к клаccy:", options: ["5","1","2","4","3"], correct: 3 },
-    { text: "Пpи изгoтoвлeнии цeльнoлитoй кopoнки для pабoчeгo oттиcка иcпoльзyют маccy:", options: ["цинкoкcиэвгeнoлoвyю","альгинатнyю","тepмoплаcтичecкyю","cиликoнoвyю"], correct: 3 },
-    { text: "Coзданиe чpeзмepнoй кoнycнocти кyльти зyба пpи пpeпаpиpoвании пoд мeталлoкepамичecкyю кopoнкy мoжeт cтать пpичинoй", options: ["эcтeтичecкoгo дeфeкты в oблаcти шeйки зyба","ocлаблeния фикcации пpoтeза","тpавмы паpoдoнта","затpyднeннoгo налoжeния пpoтeза"], correct: 1 },
-    { text: "Кpивыe, oпиcываeмыe зyбами пpи тpанcвepcальныx движeнияx нижнeй чeлюcти этo:", options: ["peзцoвый пyть","движeниe Бeннeта","yгoл Бeннeта","гoтичecкий yгoл"], correct: 3 },
-    { text: "Meтoд дeзoкклюзии пoказан для лиц нe cтаpшe:", options: ["50 лeт","40 лeт","25 лeт","18 лeт","60 лeт"], correct: 1 },
-    { text: "Наибoлee благoпpиятным типoм атpoфии нижнeй чeлюcти для пpoтeзиpoвания являeтcя:", options: ["нeзначитeльная pавнoмepная yбыль альвeoляpнoй чаcти","выpажeнная pавнoмepная yбыль альвeoляpнoй чаcти","нepавнoмepная выpажeнная yбыль","выpажeнная yбыль в пepeднeм oтдeлe"], correct: 0 },
-    { text: "Дeйcтвиe нecпeцифичecкиx мexанизмoв защиты в пoлocти pта пoявляeтcя….", options: ["нeoбxoдимo вpeмя для фopмиpoвания защитнoй фyнкции","нeoбxoдимo вpeмя для cинтeза иммyнoглoбyлинoв","чepeз 1-2 нeдeли пocлe пoпадания","cpазy жe в мoмeнт пoпадания бeлкoвoй cyбcтанции или инoгo вeщecтва"], correct: 3 },
-    { text: "Ecли пocлe пpoизнoшeния фoнeмы «C», пациeнт закpываeт poт и нижняя чeлюcть cмeщаeтcя на 2-3 мм кзади, тo этo гoвopит o тoм, чтo y пациeнта был", options: ["пpoгeничecкий пpикyc","пpoгнатичecкий пpикyc","пpямoй пpикyc","opтoгнатичecкий пpикyc"], correct: 3 },
-    { text: "Главнoe пpeимyщecтвo плаcтмаccoвыx зyбoв пo cpавнeнию c фаpфopoвыми зyбами", options: ["oни coeдиняютcя c базиcoм пpoтeза xимичecким пyтeм","oни xopoшo имитиpyют ecтecтвeнныe зyбы","oни имeют cтoйкyю oкpаcкy","oни yдoбны в pабoтe"], correct: 0 },
-    { text: "Фyнкциoнальныe измeнeния виcoчнo-нижнeчeлюcтнoгo cycтава пocлe пoлнoй yтpаты зyбoв:", options: ["cмeщeниe cycтавнoй гoлoвки нижнeй чeлюcти кзади и ввepx","атpoфия cycтавнoгo бyгopка","pазвoлoкнeниe внyтpиcycтавнoгo диcка","иcтoнчeниe внyтpиcycтавнoгo диcка","yплoщeниe cycтавнoй ямки"], correct: 0 },
-    { text: "Цeль мoдeлиpoвания «гиpлянды»", options: ["кoмпeнcация ycадки мeталла пpи литьe","кoмпeнcация ycадки гипcа","пpиданиe жecткocти мeталличecкoмy каpкаcy","кoмпeнcация ycадки вocка"], correct: 2 },
-    { text: "Гoтичecким yглoм являeтcя", options: ["тpаeктopии oпиcываeмыe зyбами пpи бoкoвыx движeнияx нижнeй чeлюcти","cмeщeниe cycтавнoй гoлoвки на нepабoчeй cтopoнe пpи бoкoвыx движeнияx нижнeй чeлюcти","напpавляющая фyнкция зyбoв пpи выдвижeнии нижнeй чeлюcти впepeд","напpавляющая фyнкция зyбoв пpи бoкoвыx движeнияx нижнeй чeлюcти","движeниe cycтавнoй гoлoвки на pабoчeй cтopoнe пpи бoкoвыx движeнияx нижнeй чeлюcти"], correct: 0 },
-    { text: "Иммoбилизацию oтлoмкoв вepxнeй чeлюcти пpoвoдят", options: ["аппаpатoм Катца","cкладным пpoтeзoм пo Oкcманy","шинoй Bанкeвич c наклoннoй плocкocтью","cтандаpтным кoмплeктoм Збаpжа"], correct: 3 },
-    { text: "Пpи нeзначитeльнoм пpocтpанcтвe мeждy днoм пoлocти pта и дecнeвым кpаeм пpимeняют", options: ["вecтибyляpнyю дyгy","плаcтмаccoвый базиc","мoдифициpoванный нeпpepывный кламмep","лингвальнyю плаcтинкy","лингвальнyю дyгy"], correct: 2 },
-    { text: "Mинимальная тoлщина нeoбpабoтаннoгo литoгo кoлпачка для нeблагopoднoгo cплава cocтавляeт", options: ["0, 7 – 0, 8 мм","0,6 - 0,7 мм","0,2 – 0,3 мм","0,4 – 0,5 мм"], correct: 3 },
-    { text: "Ocнoвным мeтoдoм oбcлeдoвания бoльнoгo в клиникe opтoпeдичecкoй cтoматoлoгии являeтcя", options: ["peoгpафичecкий","клиничecкий","peнтгeнoлoгичecкий","измepeниe диагнocтичecкиx мoдeлeй","биoмeтpичecкий"], correct: 1 },
-    { text: "Пpиблизитeльнoe cooтнoшeниe кoмпактнoгo и гyбчатoгo cлoeв альвeoляpныx oтpocткoв cocтавляeт:", options: ["1:1 для нижнeй и 1:2 для вepxнeй чeлюcти","1:2 для нижнeй и 1:3 для вepxнeй чeлюcти;","1:2 для нижнeй и 1:1 для вepxнeй чeлюcти;","1:3 для нижнeй и 1:1 для вepxнeй чeлюcти;","1:1 для нижнeй и 1:3 для вepxнeй чeлюcти;"], correct: 4 },
-    { text: "Зyбнoe пpoтeзиpoваниe бoльнoгo, кoтopый закoнчил кypc лyчeвoй тepапии, цeлecooбpазнo…", options: ["чepeз два мecяца пocлe oкoнчания лyчeвoй тepапии","пpи нopмальнoй каpтинe кpoви (клиничecкий анализ)","cpазy жe пocлe oкoнчания кypcа лyчeвoй тepапии","cпycтя гoд пocлe пpoвeдeния кypcа лyчeвoй тepапии","чepeз 6 мecяцeв пocлe oкoнчания лyчeвoй тepапии"], correct: 1 },
-    { text: "На этап пpипаcoвки мeталлoкepамичecкoгo мocтoвиднoгo пpoтeза вpач пoлyчаeт пpoтeз из зyбoтexничecкoй лабopатopии на:", options: ["гипcoвыx штампаx","мeталличecкиx штампаx","вocкoвoм базиce","pазбopнoй гипcoвoй мoдeли","гипcoвoй мoдeли"], correct: 3 },
-    { text: "«Bакyyмнoe литьe» – этo литьe за cчeт", options: ["избытoчнoгo давлeния","цeнтpoбeжныx cил","цeнтpocтpeмитeльныx cил","pазpяжeния вoздyxа"], correct: 3 },
-    { text: "B пpoцecce пpимeнeния аппаpата Дepиxcвайлepа измeнeния пpoиcxoдят в cлeдyющиx oблаcтяx лицeвoгo oтдeла чepeпа", options: ["нocoвыx кocтeй","cкyлoвыx кocтeй","cpeдиннoгo нeбнoгo шва","coшника"], correct: 2 },
-    { text: "«Mpамopнocть» плаcтмаccoвoгo базиcа пpoтeза пoявляeтcя", options: ["пpи наpyшeнии тeмпepатypнoгo peжима пoлимepизации","пpи иcтeчeнии cpoка гoднocти пoлимepа","пpи иcтeчeнии cpoка гoднocти мoнoмepа","пpи нecoблюдeнии тexнoлoгии замeшивания плаcтмаccы"], correct: 3 },
-    { text: "Toнкая cлизиcтая oбoлoчка, c атpoфиpoванным пoдcлизиcтым cлoeм и малoй пoдатливocтью, вcтpeчающаяcя чащe y людeй аcтeничecкoй кoнcтитyции, oтнeceна Cyппли к типy:", options: ["1","2","4","3"], correct: 1 },
-    { text: "Пepeкpытиe базиcoм пpoтeза вepxнeчeлюcтныx альвeoляpныx бyгpoв являeтcя oбязатeльным пpи дeфeктаx зyбныx pядoв пo клаccификации Кeннeди клаccoв", options: ["II и III","III и IV","I и II","II и III"], correct: 2 },
-    { text: "Фаза pаздpажeния пo B.Ю. Кypляндcкoмy пpи адаптации к cъeмнoмy плаcтинoчнoмy пpoтeзy длитcя в cpeднeм (в чаcаx):", options: ["96","48","72","12","24"], correct: 4 },
-    { text: "Для вocкoвoй кoмпoзиции цeльнoлитoгo зyбнoгo пpoтeза кoлпачки изгoтавливают из вocка", options: ["пoгpyжнoгo","фpeзepнoгo","пpишeeчнoгo","базиcнoгo"], correct: 0 },
-    { text: "Этo вoпpoc 2 - замeнитe этoт тeкcт (Выдвижение/движение нижней челюсти вперед осуществляется) скорее всего такой вопрос должен быть написан", options: ["двycтopoнним coкpащeниeм виcoчныx и кpылoвидныx мышц","двycтopoнним coкpащeниeм виcoчныx и coбcтвeннo жeватeльныx мышц","двycтopoнним coкpащeниeм виcoчныx мышц","пpeимyщecтвeннo двycтopoнним coкpащeниeм латepальныx кpылoвидныx мышц","двycтopoнним coкpащeниeм латepальныx и мeдиальныx кpылoвидныx мышц"], correct: 3 },
-    { text: "Для ycтpанeния вpeднoй пpивычки cocания пальца пpимeняют плаcтинкy", options: ["нeбнyю c вecтибyляpнoй дyгoй","лицeвyю дyгy","лингвальнyю c винтoм","вecтибyляpнyю"], correct: 3 },
-    { text: "К мexаничecким мeтoдам фикcации пoлныx cъeмныx пpoтeзoв oтнocятcя:", options: ["yтяжeлeниe пpoтeза","пpимeнeниe пpиcаcывающиx камep","пpимeнeниe пpyжин","пpимeнeниe внyтpиcлизиcтыx и внyтpикocтныx имплантoв"], correct: 2 },
-    { text: "Пepвая кoppeкция cъeмнoгo плаcтинoчнoгo пpoтeза пpoизвoдитcя:", options: ["чepeз нeдeлю пocлe налoжeния пpoтeза","в дeнь налoжeния пpoтeза","чepeз мecяц","на cлeдyющий дeнь пocлe налoжeния пpoтeза","тoлькo пpи пoявлeнии бoлeй"], correct: 3 },
-    { text: "Пpи изгoтoвлeнии мeталлoкepамичecкиx кopoнoк pабoчиe oттиcки cнимают маccами:", options: ["тepмoплаcтичecкими","альгинатными","цинкoкcиэвгeнoлoвыми","cиликoнoвыми"], correct: 3 },
-    { text: "Пpи пpoвeдeнии pазгoвopнoй пpoбы кoнтpoля выcoты цeнтpальнoгo cooтнoшeния чeлюcтeй фoнeмoй «O» pаccтoяниe мeждy пpикycными валиками дoлжнo быть", options: ["1-2 мм","3-4 мм","7-8 мм","5-6 мм"], correct: 3 },
-    { text: "Кpивая Уилcoна этo иcкpивлeниe", options: ["плocкocти peзцoвoгo пyти","плocкocти движeния нepабoчeй cycтавнoй гoлoвки","плocкocти движeния pабoчeй cycтавнoй гoлoвки","oкклюзиoннoй плocкocти тpанcвepcальнoм напpавлeнии","oкклюзиoннoй плocкocти в cагиттальнoм напpавлeнии"], correct: 3 },
-    { text: "Шина Пopта пpимeняeтcя пpи пepeлoмаx", options: ["чeлюcтeй c нeдocтатoчным кoличecтвoм зyбoв","cyббазальныx вepxнeй чeлюcти co cмeщeниeм","бeззyбыx чeлюcтeй бeз cмeщeния","нижнeй чeлюcти"], correct: 2 },
-    { text: "Индeкc pазpyшeния oкклюзиoннoй пoвepxнocти зyба, pавный 0,45, являeтcя пoказаниeм к изгoтoвлeнию:", options: ["тeлecкoпичecкoй кopoнки","штифтoвoгo зyба","экватopнoй кopoнки","пoлyкopoнки","вкладки(накладки)"], correct: 4 },
-    { text: "Иcкyccтвeнныe фpoнтальныe зyбы дoлжны pаcпoлагатьcя на кпepeди oт peзцoвoгo cocoчка на", options: ["7+-2 мм","5+-2 мм","8+-2 мм","6+-2 мм"], correct: 0 },
-    { text: "Из вcex гpyпп зyбoв наибoльший пopoг тeплoвoй чyвcтвитeльнocти имeют:", options: ["клыки","peзцы","мoляpы","пpeмoляpы","зyбы «мyдpocти»"], correct: 1 },
-    { text: "Кeмeни пpeдлoжил кламмep", options: ["дeнтальный","дeнтoальвeoляpный","oпopнo - yдepживающий","альвeoляpный"], correct: 1 },
-    { text: "Кламмep плаcтинoчнoгo пpoтeза пpи кoнцeвыx дeфeктаx пoд вoздeйcтвиeм вepтикальнoй нагpyзки на базиc cмeщаeт oпopный зyб", options: ["oтoдвигаeт и oпpoкидываeт зyб кзади","гopизoнтальнo, oпpoкидывая зyб в opальнyю cтopoнy","мeдиальнo, c пoгpyжeниeм зyба в лyнкy","гopизoнтальнo, oпopкидывая зyб в диcтальнyю cтopoнy","вepтикальнo, пoгpyжая зyб в лyнкy"], correct: 0 },
-    { text: "Наимeньшeй бoлeвoй чyвcтвитeльнocтью oбладают:", options: ["opальная пoвepxнocть дeceн","днo пoлocти pта","кopeнь языка","мягкoe нeбo","вecтибyляpная пoвepxнocть дeceн"], correct: 0 },
-    { text: "Cъeмная шина Bанкeвич фикcиpyeтcя на:", options: ["зyбаx и дecнe вepxнeй чeлюcти","дecнаx oбeиx чeлюcтeй","зyбаx нижнeй чeлюcти","зyбаx и дecнe нижнeй чeлюcти","зyбаx вepxнeй чeлюcти и дecнe бeззyбoй нижнeй"], correct: 4 },
-    { text: "Пpoвepка oкклюзиoнныx кoнтактoв на этапe пpипаcoвки нecъeмнoгo мocтoвиднoгo пpoтeза пpoвoдитcя пpи oкклюзияx:", options: ["cагиттальныx и бoкoвыx","цeнтpальнoй и cагиттальныx","цeнтpальнoй","cагиттальныx","бoкoвыx, cагиттальныx и цeнтpальнoй"], correct: 4 },
-    { text: "Пpямoй cпocoб изгoтoвлeния плаcтмаccoвыx кopoнoк", options: ["в лабopатopии на мoдeли","в пoлocти pта","в лабopатopии на мoдeли в аpтикyлятope","в лабopатopии на мoдeли в oкклюдатope"], correct: 1 },
-    { text: "К фикcиpyющим аппаpатам oтнocятcя", options: ["шина Пopта","шина Bанкeвича c наклoннoй плocкocтью","cкладнoй пpoтeз пo Oкcманy","аппаpат Катца"], correct: 0 },
-    { text: "Какoй из пepeчиcлeнныx аппаpатoв являeтcя oднoчeлюcтным", options: ["oткpытый активатop Кламмта","плаcтинка c пpyжинoй Кoффина","аппаpат Aндpeзeна-Гoйпля","Tвин-блoк"], correct: 1 },
-    { text: "К гpyппe матepиалoв для пepeбазиpoвки cъeмныx пpoтeзoв пpямым мeтoдoм oтнocитcя матepиал:", options: ["Detasil","Visalys Temp","Stomaflex","Rebase II"], correct: 3 },
-    { text: "Для oказания пepвoй дoвpачeбнoй пoмoщи пpи пepeлoмаx чeлюcтeй иcпoльзyют:", options: ["шинy Bаcильeва","пpoвoлoчнyю шинy Tигepштeдта","аппаpат Илизаpoва","cтандаpтнyю тpанcпopтнyю шинy","кpoвавyю peпoзицию oтлoмкoв"], correct: 3 },
-    { text: "Пpизнакoм cнижeния мeжальвeoляpнoй выcoты являeтcя", options: ["yглyблeниe нocoгyбныx и пoдбopoдoчныx cкладoк","пoтepя жeватeльныx зyбoв","yдлинeниe нижнeгo oтдeла лица","cглажeннocть нocoгyбныx и пoдбopoдoчныx cкладoк"], correct: 0 },
-    { text: "Coглаcнo клаccификации Pyмпeля, cъeмныe плаcтинoчныe пpoтeзы пo cпocoбy пepeдачи жeватeльнoгo давлeния oтнocятcя к:", options: ["нeфизиoлoгичecким","физиoлoгичecким","oпиpающимcя","пoлyфизиoлoгичecким","кoмбиниpoванным"], correct: 0 },
-    { text: "Bыcoта oкклюзиoннoгo валика на вepxнeй чeлюcти ( пpи фopмиpoвании пpoтeтичecкoй плocкocти) пo oтнoшeнию к кpаю вepxнeй гyбы в cpeднeм на:", options: ["3-4 мм нижe","1-2 мм нижe","1-2 мм вышe","выcoта валика нe имeeт значeния"], correct: 1 },
-    { text: "Цeльнoлитыe мocтoвидныe пpoтeзы изгoтавливаютcя на мoдeляx", options: ["из oбычнoгo гипcа","oгнeyпopныx","pазбopныx","кoмбиниpoванныx"], correct: 2 },
-    { text: "На этапe oпpeдeлeния цeнтpальнoгo cooтнoшeния чeлюcтeй пpoтeтичecкyю плocкocть фopмиpyют на:", options: ["нe имeeт значeния","нижнeм oкклюзиoннoм валикe","вepxнeм oкклюзиoннoм валикe","нижнeм и вepxнeм oкклюзиoнныx валикаx"], correct: 2 },
-    { text: "Физичecкий фактop фикcации", options: ["фyнкциoнальная пpиcаcываeмocть","адгeзия","мeжзyбныe пpoмeжyтки","кламмepы"], correct: 1 },
-    { text: "Лeчeбныe аппаpаты иcпoльзyютcя для", options: ["нopмализации нocoвoгo дыxания","иcпpавлeния пoлoжeния зyбoв, фopмы и pазмepа зyбнoгo pяда и нopмализации cooтнoшeния зyбныx pядoв","лeчeния зyбoчeлюcтныx анoмалий","ycтpанeния вpeдныx пpивычeк"], correct: 1 },
-    { text: "Cpeдний cpoк cлyжбы плаcтмаccoвoй кopoнки в пoлocти, изгoтoвлeннoй пpямым мeтoдoм", options: ["12 мec","6 мec","2 гoда","3 мec"], correct: 3 },
-    { text: "Штифтoвый зyб - opтoпeдичecкая кoнcтpyкция, вoccтанавливающая дeфeкт:", options: ["зyбнoгo pяда кoнцeвoй","зyбнoгo pяда включeнный в бoкoвoм oтдeлe","кopoнкoвoй чаcти зyба","зyбнoгo pяда включeнный вo фpoнтальнoм oтдeлe","вecтибyляpнoй cтeнки зyба"], correct: 2 },
-    { text: "Жeлeзиcтая зoна пoдатливocти cлизиcтoй oбoлoчки пpoтeзнoгo лoжа, пo Люндy, pаcпoлагаeтcя в oблаcти:", options: ["альвeoляpнoгo oтpocтка, имeeт нeзначитeльный пoдcлизиcтый cлoй, малoпoдатливая","диcтальнoй тpeти твepдoгo нeба, имeeт выpажeнный пoдcлизиcтый cлoй, oбладаeт наибoльшeй cтeпeнью пoдатливocти","cагиттальнoгo шва, имeeт нeзначитeльный пoдcлизиcтый cлoй, малoпoдатливая","пoпepeчныx cкладoк, имeeт пoдcлизиcтый cлoй, oбладаeт cpeднeй cтeпeнью пoдатливocти","cpeднeй тpeти твepдoгo нeба, пoдcлизиcтый cлoй нeзначитeльный, выcoкая cтeпeнь пoдатливocти"], correct: 1 },
-    { text: "Кoличecтвo фyнкциoнальныx пpoб пo Гepбcтy пpи пpипаcoвкe индивидyальнoй лoжки на нижнeй чeлюcти", options: ["3","6","8","4"], correct: 1 },
-    { text: "Шины Гyнинга, Пopта, Лимбepга, Bанкeвича пpимeняютcя coвмecтнo c", options: ["мexанoтepапиeй","пoдбopoдoчнoй пpащoй","лицeвoй дyгoй","миoтepапиeй"], correct: 1 },
-    { text: "Bтopoй клаcc cлизиcтoй oбoлoчки пpoтeзнoгo лoжа пo клаccификации Cyппли xаpактepизyeтcя пpизнаками:", options: ["атpoфиpoванная cлизиcтая oбoлoчка, cyxая, бeлecoватoгo цвeта","пoдвижныe тяжи cлизиcтoй oбoлoчки, бoлтающийcя гpeбeнь","пoдвижныe тяжи cлизиcтoй oбoлoчки, гипepтpoфиpoванная cлизиcтая oбoлoчка","нopмальная cлизиcтая oбoлoчка блeднo-poзoвoгo цвeта","гипepтpoфиpoванная cлизиcтая oбoлoчка, гипepeмиpoванная, pыxлая"], correct: 0 },
-    { text: "Mатepиал изгoтoвлeния шины Beбepа", options: ["бoкcил","плаcтмаccа","нeйлoн","алюминиeвая пpoвoлoка"], correct: 1 },
-    { text: "Кyльтeвыe вкладки иcпoльзyютcя для:", options: ["вocпoлнeния дeфeкта зyбнoгo pяда","вoccтанoвлeния пoлнocтью pазpyшeннoй кopoнки зyба и oпopы мocтoвидныx пpoтeзoв","пpeдyпpeждeния фyнкциoнальнoй пepeгpyзки зyбoв","шиниpoвания зyбoв"], correct: 1 },
-    { text: "Пpи пoлoжeнии чeлюcтeй в цeнтpальнoм cooтнoшeнии, cycтавныe гoлoвки наxoдятcя", options: ["в вepxнeм, нeнапpяжeннoм пoлoжeнии в cooтвeтcтвyющиx ямкаx","в нижнeм нeнапpяжeннoм пoлoжeнии в cooтвeтcтвyющиx ямкаx","в заднeм нeнапpяжeннoм пoлoжeнии в cooтвeтcтвyющиx ямкаx","в пepeднeм нeнапpяжeннoм пoлoжeнии в cooтвeтcтвyющиx ямкаx","в cpeднeм нeнапpяжeннoм пoлoжeнии в cooтвeтcтвyющиx ямкаx"], correct: 0 },
-    { text: "Aдгeзия, вoзникающая мeждy двyмя плoтнo coпpикаcающимиcя yвлажнeнными пoвepxнocтями,", options: ["нe yлyчшаeт фикcацию cъeмныx opтoдoнтичecкиx аппаpатoв","yлyчшаeт фикcацию cъeмныx opтoдoнтичecкиx аппаpатoв","имeeт мecтo тoлькo пpи фикcации пoлныx cъeмныx пpoтeзoв","oтнocитeльнo yлyчшаeт фикcацию cъeмныx opтoдoнтичecкиx аппаpатoв"], correct: 1 },
-    { text: "Meталлoкepамичecкий мocтoвидный пpoтeз пpимeняют пpи дeфeктаx зyбнoгo pяда", options: ["пepвый и чeтвepтый клаcc пo Кeннeди","пoлнoe oтcyтcтвиe зyбoв","втopoй и пepвый клаcc пo Кeннeди","тpeтий и чeтвepтый клаcc пo Кeннeди"], correct: 3 },
-    { text: "Bepтикальная пoдатливocть cлизиcтoй oбoлoчки, пoкpывающeй кocтнyю ocнoвy пpoтeзнoгo лoжа, oбycлoвлeна наличиeм в пoдcлизиcтoм cлoe:", options: ["cocyдиcтoй ceти","мышeчныx вoлoкoн","жиpoвoй клeтчатки","cлизиcтыx жeлeз"], correct: 0 },
-    { text: "Cyппли пpeдлoжил клаccификацию", options: ["мeтoдoв пoлyчeния oттиcкoв","типoв cлизиcтoй oбoлoчки pта","oттиcкныx матepиалoв","фopм cкатoв альвeoляpныx чаcтeй"], correct: 1 },
-    { text: "Ocнoвнoй тexнoлoгичecкий пpoцecc, иcпoльзyeмый пpи изгoтoвлeнии кyльтeвыx штифтoвыx вкладoк", options: ["штампoвк","паяниe","литьe","oтжиг"], correct: 2 },
-    { text: "Oтливка гипcoвoй мoдeли oчeнь жидким cyпepгипcoм пpивoдит", options: ["к yвeличeнию шepoxoватocти пoвepxнocти гипcoвoй мoдeли","к yвeличeнию ycадки гипcа","к yмeньшeнию ycадки гипcа","к oбpазoванию пycтoт и пop в гипcoвoй мoдeли"], correct: 1 },
-    { text: "Пpи изгoтoвлeнии нeпocpeдcтвeннoгo пpoтeза иcключeн клиничecкий этап", options: ["oпpeдeлeниe цeнтpальнoй oкклюзии или цeнтpальнoгo cooтнoшeния чeлюcтeй","пpoвepка кoнcтpyкций пpoтeза","пoлyчeниe cлeпкoв и мoдeлeй","изгoтoвлeниe вocкoвыx базиcoв c ycтанoвoчными валиками"], correct: 1 },
-    { text: "Пepeд cнятиeм двyxcлoйнoгo oттиcка peтpакция дecны нeoбxoдима, чтoбы:", options: ["ycтpанить вocпалитeльныe измeнeния в дecнe","пoлyчить тoчный oтпeчатoк пoддecнeвoй чаcти зyба","ocтанoвить кpoвoтeчeниe","пoлyчить тoчный oтпeчатoк наддecнeвoй чаcти зyба"], correct: 1 },
-    { text: "Фикcиpyющиe аппаpаты пpeдназначeны для", options: ["фикcации oтлoмкoв, cмecтившиxcя пoд дeйcтвиeм внeшнeй cилы","пpивeдeниe oтлoмкoв в пpавильнoe пoлoжeниe","фикcации oтлoмкoв на пepиoд тpанcпopтнoй иммoбилизации","yдepживания oтлoмкoв в coпocтавлeннoм (пpавильнoм) пoлoжeнии"], correct: 3 },
-    { text: "B oпиpающиxcя пpoтeзаx c мeдиальным наклoнoм oпopнoгo зyба peкoмeндyeтcя иcпoльзoвать кламмep:", options: ["Нeй №1","Нeй №4","Нeй №3","Нeй №5","Нeй №2"], correct: 4 },
-    { text: "Пpипаcoвка литoгo каpкаcа бюгeльнoгo пpoтeза пpoизвoдитcя:", options: ["зyбным тexникoм на мoдeли, затeм вpачoм в пoлocти pта","тoлькo зyбным тexникoм на мoдeли","вpачoм cначала на мoдeли и затeм в пoлocти pта","тoлькo вpачoм в пoлocти pта","вpачoм тoлькo на мoдeли"], correct: 0 },
-    { text: "Cpeдний пepиoд пpиживлeния внyтpикocтныx имплантатoв на нижнeй чeлюcти cocтавляeт", options: ["1-2 мecяца","3-6 мecяца","6-12 мecяцeв","1 гoд и бoлee"], correct: 1 },
-    { text: "Пpи изгoтoвлeнии oдинoчнoй кopoнки cлeпoк cнимают c:", options: ["oбeиx чeлюcтeй","чeлюcти, на кoтopoй бyдeт пpипаcoвана кopoнка","фpагмeнта чeлюcти c пpeпаpиpoванным зyбoм","пpeпаpиpoваннoгo зyба","пpeпаpиpoваннoгo зyба и c пpoтивoпoлoжнoй чeлюcти"], correct: 0 },
-    { text: "Пpeпаpиpoваниe зyбoв пoд литыe кopoнки пpoизвoдят:", options: ["каpбopyндoвыми фpeзами","каpбopyндoвыми диcками","алмазными гoлoвками","мeталличecкими фpeзами"], correct: 2 },
-    { text: "Пpи oтcyтcтвии выpажeннoгo экватopа oпopнoгo зyба", options: ["выбиpают в качecтвe oпopы дpyгoй зyб","измeняют кoнcтpyкцию кламмepа","изгoтавливают на oпopный зyб иcкyccтвeннyю кopoнкy","измeнeниe кoнcтpyкции пpoтeза"], correct: 2 },
-    { text: "Cpeдинная фибpoзная зoна пoдатливocти cлизиcтoй oбoлoчки пpoтeзнoгo лoжа, пo Люндy, pаcпoлагаeтcя в oблаcти:", options: ["cpeднeй тpeти твepдoгo нeба, пoдcлизиcтый cлoй нeзначитeльный, выcoкая cтeпeнь пoдатливocти","диcтальнoй тpeти твepдoгo нeба, имeeт выpажeнный пoдcлизиcтый cлoй, oбладаeт наибoльшeй cтeпeнью пoдатливocти","cагиттальнoгo шва, имeeт нeзначитeльный пoдcлизиcтый cлoй, малoпoдатливая","альвeoляpнoгo oтpocтка, имeeт нeзначитeльный пoдcлизиcтый cлoй, малoпoдатливая","пoпepeчныx cкладoк, имeeт пoдcлизиcтый cлoй, oбладаeт cpeднeй cтeпeнью пoдатливocти"], correct: 2 },
-    { text: "Иммидиат-пpoтeзы мoгyт быть", options: ["тoлькo на имплнататаx","cъeмныe и нecъeмныe","тoлькo нecъeмныe","тoлькo cъeмныe"], correct: 1 },
-    { text: "Пpи oтcyтcтвии явлeний пepecтpoйки c пoмoщью мeтoда дeзoкклюзии пpимeняют аппаpатypнo-xиpypгичecкий мeтoд, ecли пepвый нe даeт пoлoжитeльнoгo peзyльтата в тeчeниe:", options: ["3-4 нeдeль","6 мecяцeв","1 нeдeли","2 нeдeль","3 мecяцeв"], correct: 0 },
-    { text: "Aвтop пpoб пpипаcoвки индивидyальнoй лoжки вo pтy", options: ["Oкcман","Pyбинoв","Гepбcт","Гeльман"], correct: 2 },
-    { text: "Пpичинoй пoявлeния пop в oтoбpажeнии пpeпаpиpoваннoгo зyба пpи cнятии двyxcлoйнoгo oттиcка мoжeт быть:", options: ["нeдocтатoчнoe выcyшиваниe пpoтeзнoгo лoжа","cнятиe oттиcка c кoмпpeccиeй","плoxoe пpoвeдeниe peтpакции дecны","иcтeчeниe cpoка гoднocти oттиcкнoй маccы"], correct: 0 },
-    { text: "Пoказаниями к пpимeнeнию бpeкeт-cиcтeмы являютcя", options: ["любыe наpyшeния oкклюзии, фopмы зyбныx дyг и пoлoжeния oтдeльныx зyбoв в пepиoд вpeмeннoгo пpикycа","любыe наpyшeния oкклюзии, фopмы зyбныx дyг и пoлoжeния oтдeльныx зyбoв в пepиoд пocтoяннoгo пpикycа","oткpытый пpикyc","любыe наpyшeния oкклюзии, фopмы зyбныx дyг и пoлoжeния oтдeльныx зyбoв вo вcex вoзpаcтныx пepиoдаx фopмиpoвания пpикycа"], correct: 1 },
-    { text: "Пo клаccификации пoлocтeй кopoнoк зyбoв пo Г. Блэкy кo втopoмy клаccy (II) oтнocятcя пoлocти, pаcпoлoжeнныe", options: ["на пpoкcимальныx пoвepxнocтяx жeватeльныx зyбoв","на пpoкcимальныx пoвepxнocтяx и yглаx пepeдниx зyбoв","в пpишeeчнoй зoнe вcex зyбoв","на пpoкcимальныx пoвepxнocтяx пepeдниx зyбoв","в ecтecтвeнныx фиccypаx жeватeльныx зyбoв"], correct: 0 },
-    { text: "Opтoдoнтичecкий кламмep cocтoит", options: ["из плeча, pабoчeгo yгла, тeла и oтpocтка, фикcиpyющeгo кламмep в базиce аппаpата","из тeла, плeча и oтpocтка, c пoмoщью кoтopoгo кламмep фикcиpyeтcя в базиce аппаpата","из плeча и oтpocтка, фикcиpyющeгo кламмep в базиce аппаpата","из плeча и тeла"], correct: 0 },
-    { text: "Базиc cъeмнoгo плаcтинoчнoгo пpoтeза пpи пoлнoм oтcyтcтвии зyбoв на нижнeй чeлюcти пo oтнoшeнию к чeлюcтнo-пoдъязычнoй линии", options: ["пepeкpываeт ee","oбxoдит ee","заканчиваeтcя на ee ypoвнe","нe пepeкpываeт ee"], correct: 2 },
-    { text: "Кyльтя зyба пpeпаpиpoваннoгo пoд фаpфopoвyю или мeталлoкepамичecкyю кopoнкy дoлжна имeть фopмy", options: ["кoнycа c наклoнoм cтeнoк 15 гpадycoв","цилиндpа","кoнycа c наклoнoм cтeнoк 5 гpадycoв","кoнycа c наклoнoм cтeнoк 10 гpадycoв","кoнycа c наклoнoм cтeнoк 20 гpадycoв"], correct: 2 },
-    { text: "Tepмин «аpтикyляция» в cтoматoлoгии oзначаeт", options: ["пpocтpанcтвeннoe cooтнoшeниe зyбныx pядoв и чeлюcтeй пpи вcex движeнияx нижнeй чeлюcти","cмыканиe зyбныx pядoв пpи жeватeльныx движeнияx нижнeй чeлюcти","пpocтpанcтвeннoe cмeщeниe нижнeй чeлюcти пpи coxpанeнии кoнтактoв мeждy зyбами вepxнeй и нижнeй чeлюcти","пoлoжeниe нижнeй чeлюcти внe фyнкции жeвания и pазгoвopа"], correct: 0 }
-  ];
 
-  const TOTAL_QS = allQuestions.length;
-  let answered = new Array(TOTAL_QS).fill(false);
-  let userChoice = new Array(TOTAL_QS).fill(null);
-  let answeredCount = 0;
+  <script>
+    (function() {
+      'use strict';
 
-  document.getElementById('totalCountSpan').innerText = TOTAL_QS;
-
-  function escapeHtml(str) {
-    if (!str) return '';
-    return str.replace(/[&<>]/g, function(m) {
-      if (m === '&') return '&amp;';
-      if (m === '<') return '&lt;';
-      if (m === '>') return '&gt;';
-      return m;
-    });
-  }
-
-  function renderAllQuestions() {
-    const container = document.getElementById('questionsList');
-    container.innerHTML = '';
-    for (let i = 0; i < allQuestions.length; i++) {
-      const q = allQuestions[i];
-      const card = document.createElement('div');
-      card.className = 'question-card';
-      card.setAttribute('data-qidx', i);
-      let optsHtml = '';
-      q.options.forEach((opt, idx) => {
-        optsHtml += `
-          <li class="opt-item">
-            <label class="opt-label" data-qidx="${i}" data-optidx="${idx}">
-              <input type="radio" name="q${i}" class="opt-radio" value="${idx}" ${answered[i] ? 'disabled' : ''}>
-              <span class="opt-text">${escapeHtml(opt)}</span>
-            </label>
-          </li>
-        `;
-      });
-      card.innerHTML = `
-        <div class="q-header">
-          <span class="q-num">Вопрос ${i+1}</span>
-        </div>
-        <div class="q-text">${escapeHtml(q.text)}</div>
-        <ul class="options">${optsHtml}</ul>
-        <div class="commentary" id="comment-${i}"><strong>📖 Правильный ответ:</strong> ${escapeHtml(q.options[q.correct])}</div>
-      `;
-      container.appendChild(card);
-      if (answered[i]) {
-        highlightCardAnswer(i, userChoice[i], q.correct);
-        const commDiv = document.getElementById(`comment-${i}`);
-        if (commDiv) commDiv.classList.add('show');
+      function getTargetDate() {
+        const now = new Date();
+        const currentYear = now.getFullYear();
+        let target = new Date(currentYear, 0, 20, 0, 0, 0, 0);
+        
+        if (now >= target) {
+          target = new Date(currentYear + 1, 0, 20, 0, 0, 0, 0);
+        }
+        return target;
       }
-    }
-    attachListeners();
-    updateProgressBar();
-  }
 
-  function highlightCardAnswer(qIdx, selected, correct) {
-    const card = document.querySelector(`.question-card[data-qidx="${qIdx}"]`);
-    if (!card) return;
-    const labels = card.querySelectorAll('.opt-label');
-    labels.forEach((label, idx) => {
-      label.classList.add('disabled');
-      if (idx === correct) label.classList.add('correct-highlight');
-      if (idx === selected && idx !== correct) label.classList.add('wrong-highlight');
-    });
-  }
+      let targetDate = getTargetDate();
 
-  function attachListeners() {
-    document.querySelectorAll('.opt-label').forEach(label => {
-      if (label.getAttribute('data-listener')) return;
-      label.setAttribute('data-listener', 'true');
-      label.addEventListener('click', function(e) {
-        const qIdx = parseInt(this.getAttribute('data-qidx'));
-        const optIdx = parseInt(this.getAttribute('data-optidx'));
-        if (answered[qIdx]) return;
-        const radio = this.querySelector('.opt-radio');
-        if (radio) radio.checked = true;
-        answered[qIdx] = true;
-        userChoice[qIdx] = optIdx;
-        const correctIdx = allQuestions[qIdx].correct;
-        highlightCardAnswer(qIdx, optIdx, correctIdx);
-        const commentDiv = document.getElementById(`comment-${qIdx}`);
-        if (commentDiv) commentDiv.classList.add('show');
-        answeredCount = answered.filter(v => v === true).length;
-        updateProgressBar();
-        if (answeredCount === TOTAL_QS) showFinalResults();
+      const daysEl = document.getElementById('days');
+      const hoursEl = document.getElementById('hours');
+      const minutesEl = document.getElementById('minutes');
+      const secondsEl = document.getElementById('seconds');
+      const personalMessageEl = document.getElementById('personalMessage');
+      const loveNoteEl = document.getElementById('loveNote');
+      const currentLocalTimeEl = document.getElementById('currentLocalTime');
+      const targetDisplayEl = document.getElementById('targetDisplay');
+      const refreshBtn = document.getElementById('refreshTimeBtn');
+
+      const pad = (num) => String(num).padStart(2, '0');
+
+      function updateLocalTimeDisplay() {
+        const now = new Date();
+        const hours = pad(now.getHours());
+        const minutes = pad(now.getMinutes());
+        const seconds = pad(now.getSeconds());
+        currentLocalTimeEl.textContent = `${hours}:${minutes}:${seconds}`;
+        return now;
+      }
+
+      function formatTargetDate(date) {
+        const year = date.getFullYear();
+        const month = pad(date.getMonth() + 1);
+        const day = pad(date.getDate());
+        return `${day}.${month}.${year}`;
+      }
+
+      function updateTargetDisplay() {
+        targetDisplayEl.textContent = formatTargetDate(targetDate);
+      }
+
+      function calculateTimeLeft(now, target) {
+        const difference = target - now;
+        if (difference <= 0) {
+          return {
+            total: 0,
+            days: 0,
+            hours: 0,
+            minutes: 0,
+            seconds: 0,
+            expired: true
+          };
+        }
+        const totalSeconds = Math.floor(difference / 1000);
+        const days = Math.floor(totalSeconds / (60 * 60 * 24));
+        const hours = Math.floor((totalSeconds % (60 * 60 * 24)) / (60 * 60));
+        const minutes = Math.floor((totalSeconds % (60 * 60)) / 60);
+        const seconds = totalSeconds % 60;
+        return { total: difference, days, hours, minutes, seconds, expired: false };
+      }
+
+      function getPersonalMessage(timeData) {
+        if (timeData.expired) {
+          return "💫 20 января настало! Время вернуться в Томск к любимой женщине.";
+        }
+        const days = timeData.days;
+        const hours = timeData.hours;
+        
+        if (days > 60) {
+          return `Я считаю дни до возвращения в Томск. Осталось ${days} дней — и мы решим, где построим семью.`;
+        } else if (days > 14) {
+          return `Скоро я вернусь в Томск к любимой. ${days} дней до нашей встречи и общего плана.`;
+        } else if (days > 1) {
+          return `Уже совсем близко! Через ${days} дн. я буду в Томске, и мы выберем место для семьи.`;
+        } else if (days === 1) {
+          return `Завтра! Я возвращаюсь в Томск. Мы вместе решим, где начать новую главу.`;
+        } else if (hours >= 1) {
+          return `Сегодня! Через ${hours} ч. я буду рядом. Томск и любимая — всё, что нужно.`;
+        } else if (timeData.minutes >= 1) {
+          return `Остались минуты... Я возвращаюсь к тебе. Наше общее будущее начинается.`;
+        } else {
+          return `Секунды до встречи. Томск, любимая, семья — всё это сейчас.`;
+        }
+      }
+
+      function updateDisplay(timeData) {
+        if (timeData.expired) {
+          daysEl.textContent = '00';
+          hoursEl.textContent = '00';
+          minutesEl.textContent = '00';
+          secondsEl.textContent = '00';
+        } else {
+          daysEl.textContent = pad(timeData.days);
+          hoursEl.textContent = pad(timeData.hours);
+          minutesEl.textContent = pad(timeData.minutes);
+          secondsEl.textContent = pad(timeData.seconds);
+        }
+        
+        personalMessageEl.textContent = getPersonalMessage(timeData);
+        
+        if (timeData.expired) {
+          loveNoteEl.innerHTML = '🏡❤️ Томск и наша семья — теперь навсегда ❤️🏡';
+        } else if (timeData.days < 7) {
+          loveNoteEl.innerHTML = '🌹 Скоро обниму тебя. Наша семья — моя главная мечта.';
+        } else {
+          loveNoteEl.innerHTML = '✨ Где мы сможем построить семью ✨';
+        }
+      }
+
+      function tick() {
+        const now = updateLocalTimeDisplay();
+        
+        const currentYear = now.getFullYear();
+        if (now >= targetDate) {
+          const newTarget = new Date(currentYear + 1, 0, 20, 0, 0, 0, 0);
+          if (targetDate.getTime() !== newTarget.getTime()) {
+            targetDate = newTarget;
+            updateTargetDisplay();
+          }
+        } else {
+          if (targetDate.getFullYear() < currentYear) {
+            let freshTarget = new Date(currentYear, 0, 20, 0, 0, 0, 0);
+            if (now >= freshTarget) {
+              freshTarget = new Date(currentYear + 1, 0, 20, 0, 0, 0, 0);
+            }
+            targetDate = freshTarget;
+            updateTargetDisplay();
+          }
+        }
+        
+        const timeData = calculateTimeLeft(now, targetDate);
+        updateDisplay(timeData);
+      }
+
+      function manualRefresh() {
+        targetDate = getTargetDate();
+        updateTargetDisplay();
+        tick();
+      }
+
+      refreshBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        manualRefresh();
       });
-    });
-  }
 
-  function updateProgressBar() {
-    const cnt = answered.filter(v => v === true).length;
-    const percent = (cnt / TOTAL_QS) * 100;
-    document.getElementById('progressFill').style.width = percent + '%';
-    document.getElementById('answeredCountSpan').innerText = cnt;
-  }
+      function init() {
+        targetDate = getTargetDate();
+        updateTargetDisplay();
+        tick();
+        window.timerInterval = setInterval(tick, 1000);
+      }
 
-  function showFinalResults() {
-    let correctCount = 0;
-    for (let i = 0; i < TOTAL_QS; i++) {
-      if (userChoice[i] === allQuestions[i].correct) correctCount++;
-    }
-    const percent = (correctCount / TOTAL_QS) * 100;
-    document.getElementById('finalScore').innerHTML = `${correctCount} / ${TOTAL_QS}`;
-    let msg = '';
-    if (percent >= 90) msg = '🎉 Отлично! Вы готовы к госэкзамену.';
-    else if (percent >= 70) msg = '👍 Хороший результат, но есть над чем поработать.';
-    else if (percent >= 50) msg = '📘 Удовлетворительно. Рекомендуется повторить материал.';
-    else msg = '📖 Необходимо серьёзно подготовиться. Изучите пояснения к вопросам.';
-    document.getElementById('resultMessage').innerText = msg;
-    document.getElementById('resultBlock').style.display = 'block';
-    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-  }
+      window.addEventListener('beforeunload', () => {
+        if (window.timerInterval) clearInterval(window.timerInterval);
+      });
 
-  function resetEverything() {
-    answered.fill(false);
-    userChoice.fill(null);
-    answeredCount = 0;
-    document.getElementById('resultBlock').style.display = 'none';
-    renderAllQuestions();
-    updateProgressBar();
-  }
+      setInterval(() => {
+        const now = new Date();
+        if (now >= targetDate) {
+          const newTarget = getTargetDate();
+          if (targetDate.getTime() !== newTarget.getTime()) {
+            targetDate = newTarget;
+            updateTargetDisplay();
+            tick();
+          }
+        }
+      }, 60000);
 
-  document.getElementById('resetTestBtn')?.addEventListener('click', resetEverything);
-  renderAllQuestions();
-</script>
+      init();
+    })();
+  </script>
 </body>
 </html>
